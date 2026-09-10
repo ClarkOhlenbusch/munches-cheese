@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BoxFrontHeader from '../components/BoxFrontHeader.astro';
+import MarqueeBanner from '../components/MarqueeBanner.astro';
+import PocketPackSection from '../components/PocketPackSection.astro';
+import MacroSection from '../components/MacroSection.astro';
+import CampaignSection from '../components/CampaignSection.astro';
+import StoreLocatorSection from '../components/StoreLocatorSection.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+---
+
+<Layout title="MUNCHES™ : Original Mozzarella Cheese Sticks | Just a Little Something to Take the Edge Off">
+  <main class="w-full min-h-screen bg-[#FFFDF5] overflow-x-hidden">
+    <!-- 1. Front-of-Box Hero Section -->
+    <BoxFrontHeader />
+
+    <!-- 2. Sunshine Yellow Marquee Ticker -->
+    <MarqueeBanner />
+
+    <!-- 3. Pocket Pack / Flip-Top Carton Showcase (#the-pack) -->
+    <PocketPackSection />
+
+    <!-- 4. Macro Cheat Code & Comparison Matrix (#macros) -->
+    <MacroSection />
+
+    <!-- 5. Royal Blue Reverse Marquee Ticker -->
+    <MarqueeBanner 
+      bgClass="bg-[#0B62C4]" 
+      textClass="text-[#FFE042]" 
+      borderClass="border-y-3 border-[#0B62C4]" 
+      reverse={true} 
+      items={[
+        "TAKE THE EDGE OFF",
+        "NO CHALKY PROTEIN POWDER",
+        "RIGID FLIP-TOP POCKET CARTON",
+        "100% WISCONSIN MOZZARELLA",
+        "DESK HERO • GYM BUDDY • ROAD TRIP CRUCIAL",
+        "PEEL • SNACK • REPEAT ◡",
+        "CLEAN ENERGY • ZERO CRASH"
+      ]}
+    />
+
+    <!-- 6. Official Brand Campaign Showcase (#the-snack) -->
+    <CampaignSection />
+
+    <!-- 7. Where to Find Munches Store Locator (#find-stores) -->
+    <StoreLocatorSection />
+
+    <!-- 8. Official Brand Site Footer -->
+    <SiteFooter />
+  </main>
+</Layout>
+

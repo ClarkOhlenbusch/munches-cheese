@@ -1,0 +1,324 @@
+---
+// src/components/MunchesMascot.astro
+// Hand-crafted SVG of Munchie the cheese stick mascot
+// Designed with authentic stylized contours and no shortcuts based directly on the original packaging:
+// C:\Users\clark\Downloads\MunchesCheeseSticks.png
+// Elongated string cheese stick with bottom cut off at section edge
+
+interface Props {
+  class?: string;
+  id?: string;
+  showRays?: boolean;
+  interactive?: boolean;
+}
+
+const {
+  class: className = "w-48 sm:w-56 md:w-64 lg:w-72 h-auto",
+  id = "munches-mascot",
+  showRays = true,
+  interactive = true,
+} = Astro.props;
+---
+
+<div 
+  id={id} 
+  class={`mascot-container relative inline-block select-none ${interactive ? 'cursor-pointer group' : ''} ${className}`}
+  title="Munchie : The Munches Cheese Stick Mascot"
+>
+  <svg 
+    viewBox="0 0 340 640" 
+    class={`w-full h-auto block overflow-hidden filter drop-shadow-[0_16px_32px_rgba(250,70,22,0.18)] ${interactive ? 'transition-transform duration-300 ease-out group-hover:scale-105 active:scale-95' : ''}`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <!-- Cylindrical Cheese Stick Body Gradient (Realistic whole-milk mozzarella tones) -->
+      <linearGradient id="mascot-body-shading" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(12)">
+        <stop offset="0%" stop-color="#FCFAF2" />
+        <stop offset="10%" stop-color="#FFFDF9" />
+        <stop offset="30%" stop-color="#FFFDF5" />
+        <stop offset="55%" stop-color="#FCF3DD" />
+        <stop offset="78%" stop-color="#F6DEC9" />
+        <stop offset="88%" stop-color="#F2D59F" />
+        <stop offset="100%" stop-color="#E8C78B" />
+      </linearGradient>
+
+      <!-- Top Cap Radial Depth Gradient (Perspective Oval Surface) -->
+      <radialGradient id="mascot-cap-shading" cx="42%" cy="38%" r="60%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="45%" stop-color="#FFFDF8" />
+        <stop offset="78%" stop-color="#F8E7C5" />
+        <stop offset="100%" stop-color="#EACD96" />
+      </radialGradient>
+
+      <!-- Soft cast shadow under the top rim -->
+      <linearGradient id="mascot-rim-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#CFA86A" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#CFA86A" stop-opacity="0" />
+      </linearGradient>
+
+      <!-- Tactile Ambient Drop Shadow -->
+      <filter id="mascot-tactile-shadow" x="-20%" y="-15%" width="140%" height="135%">
+        <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#FA4616" flood-opacity="0.16" />
+        <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#0B62C4" flood-opacity="0.12" />
+      </filter>
+    </defs>
+
+    <style>
+      .ray-item {
+        transform-origin: center center;
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .group:hover .ray-item {
+        transform: scale(1.2);
+      }
+      @keyframes ray-pulse {
+        0%, 100% { opacity: 0.92; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.08); }
+      }
+      .ray-pulse-anim {
+        animation: ray-pulse 2.8s ease-in-out infinite;
+      }
+    </style>
+
+    <!-- ========================================================================= -->
+    <!-- 1. SUNBURST ENERGY RAYS (Exact 5 Hand-Drawn Tapered Capsules from Box)    -->
+    <!-- ========================================================================= -->
+    {showRays && (
+      <g id="mascot-sunburst-rays" class="ray-pulse-anim">
+        <!-- LEFT RAY 1: Upper-left, angled ~ -55 deg -->
+        <path 
+          class="ray-item"
+          d="M 60 170 C 55 165, 57 158, 63 155 C 69 152, 76 154, 81 159 L 98 176 C 103 181, 101 188, 95 191 C 90 194, 83 192, 78 187 Z" 
+          fill="#FFE042" 
+        />
+
+        <!-- LEFT RAY 2: Lower-left, angled ~ -14 deg -->
+        <path 
+          class="ray-item"
+          d="M 50 220 C 44 218, 42 211, 45 206 C 49 201, 56 200, 62 202 L 90 210 C 96 212, 99 218, 96 223 C 93 229, 86 230, 80 229 Z" 
+          fill="#FFE042" 
+        />
+
+        <!-- RIGHT RAY 1: Upper-right, angled ~ -34 deg -->
+        <path 
+          class="ray-item"
+          d="M 235 135 C 240 130, 247 131, 252 135 L 278 156 C 283 160, 283 167, 278 171 C 273 175, 266 174, 261 170 L 235 149 C 231 145, 230 139, 235 135 Z" 
+          fill="#FFE042" 
+        />
+
+        <!-- RIGHT RAY 2: Middle-right, angled ~ -4 deg (horizontal flare) -->
+        <path 
+          class="ray-item"
+          d="M 245 185 C 251 184, 257 188, 258 194 L 286 197 C 292 198, 296 203, 295 209 C 294 215, 288 218, 282 218 L 254 214 C 247 213, 243 208, 243 202 C 243 196, 244 190, 245 185 Z" 
+          fill="#FFE042" 
+        />
+
+        <!-- RIGHT RAY 3: Lower-right, angled ~ 44 deg -->
+        <path 
+          class="ray-item"
+          d="M 232 235 C 236 230, 243 230, 248 235 L 275 260 C 279 265, 279 272, 274 276 C 269 280, 262 280, 258 275 L 231 250 C 227 246, 227 240, 232 235 Z" 
+          fill="#FFE042" 
+        />
+      </g>
+    )}
+
+    <!-- ========================================================================= -->
+    <!-- 2. ELONGATED CHEESE STICK BODY & PERSPECTIVE TOP CAP (Cut Off at Bottom)   -->
+    <!-- ========================================================================= -->
+    <g id="mascot-cheese-stick" filter="url(#mascot-tactile-shadow)">
+      
+      <!-- MAIN CYLINDER BODY (Elongated whole-milk mozzarella stick, 13.5-deg lean, cut off at bottom) -->
+      <path 
+        d="
+          M 120 72
+          C 114 130, 107 200, 99 280
+          C 90 370, 80 470, 70 560
+          L 60 655
+          L 185 655
+          L 190 560
+          C 200 470, 212 370, 224 270
+          C 234 190, 241 120, 245 60
+          Z
+        "
+        fill="url(#mascot-body-shading)"
+        stroke="#0B62C4"
+        stroke-width="7.5"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      />
+
+      <!-- Primary Highlight Sheen (Crisp vertical curve down front-left to bottom) -->
+      <path 
+        d="
+          M 128 85
+          C 122 140, 114 220, 106 300
+          C 97 390, 87 490, 77 580
+          L 69 655
+        "
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="9"
+        stroke-linecap="round"
+        opacity="0.82"
+      />
+
+      <!-- Secondary soft highlight line -->
+      <path 
+        d="
+          M 142 90
+          C 136 145, 128 225, 120 305
+          C 111 395, 101 495, 91 585
+          L 83 655
+        "
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="4.5"
+        stroke-linecap="round"
+        opacity="0.45"
+      />
+
+      <!-- PERSPECTIVE TOP CAP (Angle matching package, sloping down-right) -->
+      <!-- Soft cast shadow under the top rim -->
+      <ellipse 
+        cx="182" 
+        cy="68" 
+        rx="63" 
+        ry="22" 
+        transform="rotate(-15 182 68)"
+        fill="url(#mascot-rim-shadow)"
+      />
+
+      <!-- Top Cap Surface Face -->
+      <ellipse 
+        cx="182" 
+        cy="64" 
+        rx="63" 
+        ry="21" 
+        transform="rotate(-15 182 64)"
+        fill="url(#mascot-cap-shading)"
+        stroke="#0B62C4"
+        stroke-width="7.5"
+        stroke-linejoin="round"
+      />
+
+      <!-- Inner top cap highlight arc -->
+      <path 
+        d="M 130 57 C 148 47, 198 44, 232 55" 
+        fill="none" 
+        stroke="#FFFFFF" 
+        stroke-width="3.5" 
+        stroke-linecap="round" 
+        opacity="0.85" 
+      />
+    </g>
+
+    <!-- ========================================================================= -->
+    <!-- 3. RETRO WAYFARER SUNGLASSES (Stylized Browline, Reflection Arcs & Temples)-->
+    <!-- ========================================================================= -->
+    <g id="mascot-sunglasses">
+      
+      <!-- LEFT TEMPLE ARM -->
+      <path 
+        d="M 82 200 C 89 199, 98 200, 107 202" 
+        fill="none" 
+        stroke="#0B62C4" 
+        stroke-width="7" 
+        stroke-linecap="round" 
+      />
+      <!-- Left temple outer wrap hook -->
+      <path 
+        d="M 81 194 C 79 196, 78 201, 81 205" 
+        fill="none" 
+        stroke="#0B62C4" 
+        stroke-width="5.5" 
+        stroke-linecap="round" 
+      />
+
+      <!-- RIGHT TEMPLE ARM & HINGE -->
+      <path 
+        d="M 215 218 C 224 219, 234 221, 241 222" 
+        fill="none" 
+        stroke="#0B62C4" 
+        stroke-width="7" 
+        stroke-linecap="round" 
+      />
+      <circle cx="242" cy="223" r="4" fill="#0B62C4" />
+
+      <!-- BRIDGE -->
+      <path 
+        d="M 144 202 C 150 200, 157 201, 163 203" 
+        fill="none" 
+        stroke="#0B62C4" 
+        stroke-width="7" 
+        stroke-linecap="round" 
+      />
+
+      <!-- LEFT LENS -->
+      <path 
+        d="
+          M 102 197
+          C 120 194, 139 197, 147 202
+          C 148 213, 143 234, 133 240
+          C 121 247, 107 244, 102 231
+          C 97 220, 97 207, 102 197
+          Z
+        "
+        fill="#0B62C4"
+        stroke="#0B62C4"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+
+      <!-- Left Lens Specular Reflection Arc -->
+      <path 
+        d="M 107 205 C 114 203, 122 204, 126 207 C 125 214, 118 220, 113 219 C 109 218, 106 212, 107 205 Z"
+        fill="#FFFFFF"
+        opacity="0.92"
+      />
+      <circle cx="109" cy="224" r="2.2" fill="#FFFFFF" opacity="0.85" />
+
+      <!-- RIGHT LENS -->
+      <path 
+        d="
+          M 161 203
+          C 175 200, 203 204, 219 210
+          C 220 221, 216 240, 205 247
+          C 192 254, 175 251, 167 237
+          C 161 224, 160 211, 161 203
+          Z
+        "
+        fill="#0B62C4"
+        stroke="#0B62C4"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+
+      <!-- Right Lens Specular Reflection Arc -->
+      <path 
+        d="M 171 211 C 179 209, 191 211, 195 214 C 194 221, 187 228, 181 227 C 176 225, 173 218, 171 211 Z"
+        fill="#FFFFFF"
+        opacity="0.92"
+      />
+      <circle cx="173" cy="231" r="2.5" fill="#FFFFFF" opacity="0.85" />
+
+    </g>
+
+    <!-- ========================================================================= -->
+    <!-- 4. THE PLAYFUL SMILE (Thick hand-drawn rounded U curve)                   -->
+    <!-- ========================================================================= -->
+    <g id="mascot-smile">
+      <path 
+        d="
+          M 138 262
+          C 136 279, 144 290, 156 289
+          C 166 288, 176 276, 174 260
+        " 
+        fill="none" 
+        stroke="#0B62C4" 
+        stroke-width="7.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+      />
+    </g>
+  </svg>
+</div>

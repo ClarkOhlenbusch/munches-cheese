@@ -1,0 +1,111 @@
+---
+// src/components/PocketPackSection.astro
+// The Flip-Top Pocket Pack Product Showcase Section
+---
+
+<section id="the-pack" class="relative w-full bg-[#FFFDF5] py-16 sm:py-24 px-4 sm:px-8 overflow-hidden border-b-4 border-[#0B62C4]">
+  
+  <!-- Subtle Background Decorative Cheese Blobs -->
+  <div class="absolute inset-0 pointer-events-none opacity-40 overflow-hidden">
+    <div class="absolute -left-20 top-20 w-80 h-80 bg-[#FFE042]/30 rounded-full blur-3xl"></div>
+    <div class="absolute -right-20 bottom-10 w-96 h-96 bg-[#FA4616]/15 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
+    
+    <h2 class="reveal-on-scroll font-bubble text-3xl sm:text-5xl md:text-6xl font-black text-[#0B62C4] text-center leading-[1.05] tracking-tight max-w-3xl">
+      STRING CHEESE FINALLY GREW UP.
+    </h2>
+
+    <p class="reveal-on-scroll font-bold text-sm sm:text-base md:text-lg text-[#0B62C4]/80 text-center max-w-2xl mt-4 leading-relaxed">
+      For 30 years, string cheese was trapped in flimsy plastic sacks at the bottom of kids' lunchboxes. We engineered a rigid, flip-top pocket carton designed for real adult everyday life.
+    </p>
+
+    <!-- Interactive 3D Product Stage & Feature Cards Grid -->
+    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-12 sm:mt-16">
+      
+      <!-- Left 2 Feature Cards -->
+      <div class="lg:col-span-3 flex flex-col gap-6 order-2 lg:order-1">
+        <!-- Feature 1 -->
+        <div class="reveal-on-scroll bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4] hover:-translate-y-1.5 transition-transform">
+          <div class="w-12 h-12 bg-[#FFE042] border-2 border-[#0B62C4] rounded-2xl flex items-center justify-center text-2xl shadow-xs mb-3">
+            📦
+          </div>
+          <h3 class="font-bubble text-lg sm:text-xl font-black text-[#FA4616] leading-snug">
+            RIGID FLIP-TOP CARTON
+          </h3>
+          <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-1.5 leading-relaxed">
+            Rigid carton that won't get crushed in your bag. Flip the lid open, pull a stick, and snap it closed with a satisfying click.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="reveal-on-scroll bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4] hover:-translate-y-1.5 transition-transform" style="transition-delay: 150ms;">
+          <div class="w-12 h-12 bg-[#FFE042] border-2 border-[#0B62C4] rounded-2xl flex items-center justify-center text-2xl shadow-xs mb-3">
+            🚗
+          </div>
+          <h3 class="font-bubble text-lg sm:text-xl font-black text-[#0B62C4] leading-snug">
+            FITS YOUR CUP HOLDER
+          </h3>
+          <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-1.5 leading-relaxed">
+            Engineered to slide right into your car cup holder, backpack side sleeve, desk organizer, or gym duffel.
+          </p>
+        </div>
+      </div>
+
+      <!-- Center: High-Res Transparent Product Box Image with 3D Parallax Hover -->
+      <div class="lg:col-span-6 flex flex-col items-center justify-center order-1 lg:order-2 py-4 select-none">
+        <div 
+          id="product-box-wrapper"
+          class="reveal-scale relative group cursor-pointer transition-transform duration-300 ease-out"
+          title="Munches 6-Pack Flip-Top Carton"
+        >
+          <!-- Radiant Glow Behind Product Box -->
+          <div class="absolute inset-0 bg-[#FA4616]/20 rounded-full blur-2xl transform scale-90 group-hover:scale-110 transition-transform"></div>
+          
+          <img 
+            src="/munches-product.png" 
+            alt="Munches Original Mozzarella Cheese Sticks Flip-Top Carton" 
+            class="relative z-10 w-72 sm:w-88 md:w-[420px] max-w-full h-auto drop-shadow-[0_24px_48px_rgba(250,70,22,0.28)] group-hover:scale-105 transition-transform duration-300 ease-out"
+          />
+
+          <!-- Floating Badge Overlay -->
+          <div class="absolute -bottom-4 sm:-bottom-6 right-2 sm:right-6 z-20 bg-[#FFE042] text-[#0B62C4] border-3 border-[#0B62C4] px-4 py-2 rounded-2xl shadow-[4px_4px_0px_#0B62C4] font-bubble text-xs sm:text-sm font-black transform rotate-6 group-hover:rotate-0 transition-transform">
+            <span>6 STAND-UP STICKS ◡</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right 2 Feature Cards -->
+      <div class="lg:col-span-3 flex flex-col gap-6 order-3">
+        <!-- Feature 3 -->
+        <div class="reveal-on-scroll bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4] hover:-translate-y-1.5 transition-transform" style="transition-delay: 100ms;">
+          <div class="w-12 h-12 bg-[#FFE042] border-2 border-[#0B62C4] rounded-2xl flex items-center justify-center text-2xl shadow-xs mb-3">
+            🧀
+          </div>
+          <h3 class="font-bubble text-lg sm:text-xl font-black text-[#0B62C4] leading-snug">
+            6 STANDING STICKS
+          </h3>
+          <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-1.5 leading-relaxed">
+            Individually sealed and standing upright. No condensation puddles, no rummaging through sticky plastic pouches.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="reveal-on-scroll bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4] hover:-translate-y-1.5 transition-transform" style="transition-delay: 250ms;">
+          <div class="w-12 h-12 bg-[#FFE042] border-2 border-[#0B62C4] rounded-2xl flex items-center justify-center text-2xl shadow-xs mb-3">
+            ◡
+          </div>
+          <h3 class="font-bubble text-lg sm:text-xl font-black text-[#FA4616] leading-snug">
+            PEEL • SNACK • REPEAT
+          </h3>
+          <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-1.5 leading-relaxed">
+            Under the lid reads: "Good Snacks, Brighter Days". One-handed peel tab lets you snack cleanly during meetings or workouts.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

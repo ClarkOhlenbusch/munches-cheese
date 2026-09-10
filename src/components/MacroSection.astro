@@ -1,0 +1,139 @@
+---
+// src/components/MacroSection.astro
+// Nutritional breakdown & comparison table ("The Macro Cheat Code")
+---
+
+<section id="macros" class="relative w-full bg-[#FFFDF5] py-16 sm:py-24 px-4 sm:px-8 overflow-hidden border-b-4 border-[#0B62C4]">
+  
+  <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
+    
+    <h2 class="reveal-on-scroll font-bubble text-3xl sm:text-5xl md:text-6xl font-black text-[#0B62C4] text-center leading-[1.05] tracking-tight max-w-3xl">
+      THE MACRO CHEAT CODE
+    </h2>
+
+    <p class="reveal-on-scroll font-bold text-sm sm:text-base md:text-lg text-[#0B62C4]/80 text-center max-w-2xl mt-4 leading-relaxed">
+      You don't need 28 ingredients and 14 grams of sugar alcohol to get real on-the-go protein. Just 100% Wisconsin whole-milk mozzarella.
+    </p>
+
+    <!-- 4 Big Nutrition Stat Tiles -->
+    <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12">
+      
+      <!-- Card 1: 7g Protein -->
+      <div class="reveal-on-scroll bg-[#0B62C4] text-white border-3 border-[#0B62C4] rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-[6px_6px_0px_#FA4616] hover:-translate-y-2 transition-transform">
+        <span class="text-3xl sm:text-4xl mb-2">💪</span>
+        <span class="font-bubble text-4xl sm:text-5xl md:text-6xl font-black text-[#FFE042] leading-none">
+          7g
+        </span>
+        <span class="font-bubble text-base sm:text-lg font-black tracking-wider uppercase mt-2">
+          PROTEIN
+        </span>
+        <p class="text-xs sm:text-sm text-white/80 font-bold mt-2 leading-snug">
+          Natural whole-milk casein for sustained energy.
+        </p>
+      </div>
+
+      <!-- Card 2: 80 Calories -->
+      <div class="reveal-on-scroll bg-[#FA4616] text-white border-3 border-[#0B62C4] rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-[6px_6px_0px_#0B62C4] hover:-translate-y-2 transition-transform" style="transition-delay: 100ms;">
+        <span class="text-3xl sm:text-4xl mb-2">🔥</span>
+        <span class="font-bubble text-4xl sm:text-5xl md:text-6xl font-black text-white leading-none">
+          80
+        </span>
+        <span class="font-bubble text-base sm:text-lg font-black tracking-wider uppercase mt-2">
+          CALORIES
+        </span>
+        <p class="text-xs sm:text-sm text-white/90 font-bold mt-2 leading-snug">
+          Takes the edge off without weighing you down.
+        </p>
+      </div>
+
+      <!-- Card 3: 100% Whole Milk -->
+      <div class="reveal-on-scroll bg-[#FFE042] text-[#0B62C4] border-3 border-[#0B62C4] rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-[6px_6px_0px_#0B62C4] hover:-translate-y-2 transition-transform" style="transition-delay: 200ms;">
+        <span class="text-3xl sm:text-4xl mb-2">🧀</span>
+        <span class="font-bubble text-4xl sm:text-5xl md:text-6xl font-black text-[#FA4616] leading-none">
+          100%
+        </span>
+        <span class="font-bubble text-base sm:text-lg font-black tracking-wider uppercase mt-2">
+          WISCONSIN
+        </span>
+        <p class="text-xs sm:text-sm text-[#0B62C4]/80 font-bold mt-2 leading-snug">
+          Real whole milk for that rich, creamy mozzarella pull.
+        </p>
+      </div>
+
+      <!-- Card 4: 0g Sugar -->
+      <div class="reveal-on-scroll bg-white text-[#0B62C4] border-3 border-[#0B62C4] rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-[6px_6px_0px_#00A86B] hover:-translate-y-2 transition-transform" style="transition-delay: 300ms;">
+        <span class="text-3xl sm:text-4xl mb-2">🍃</span>
+        <span class="font-bubble text-4xl sm:text-5xl md:text-6xl font-black text-[#00A86B] leading-none">
+          0g
+        </span>
+        <span class="font-bubble text-base sm:text-lg font-black tracking-wider uppercase mt-2">
+          ADDED SUGAR
+        </span>
+        <p class="text-xs sm:text-sm text-[#0B62C4]/80 font-bold mt-2 leading-snug">
+          Zero artificial junk, zero seed oils, zero crash.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- The Snack Comparison Table -->
+    <div class="reveal-on-scroll w-full mt-16 sm:mt-20">
+      
+      <div class="text-center mb-8">
+        <h3 class="font-bubble text-2xl sm:text-3xl md:text-4xl font-black text-[#0B62C4]">
+          MUNCHES VS. THE USUAL SUSPECTS
+        </h3>
+        <p class="font-bold text-xs sm:text-sm text-[#0B62C4]/70 mt-1 uppercase tracking-wider">
+          How our cheese stick stacks up to vending machine regulars
+        </p>
+      </div>
+
+      <div class="overflow-x-auto w-full pb-4">
+        <table class="w-full border-collapse border-4 border-[#0B62C4] bg-white rounded-3xl overflow-hidden shadow-[8px_8px_0px_#0B62C4] text-left min-w-[620px]">
+          <thead>
+            <tr class="bg-[#0B62C4] text-white font-bubble text-xs sm:text-sm uppercase tracking-wider">
+              <th class="p-4 sm:p-5">The Metric</th>
+              <th class="p-4 sm:p-5 bg-[#FA4616] text-[#FFE042]">🧀 Munches™ Mozzarella</th>
+              <th class="p-4 sm:p-5 opacity-90">Chalky Protein Bars</th>
+              <th class="p-4 sm:p-5 opacity-90">Vending Chips</th>
+            </tr>
+          </thead>
+          <tbody class="font-bold text-xs sm:text-sm divide-y-2 divide-[#0B62C4]/15">
+            <tr class="hover:bg-[#FFFDF5]">
+              <td class="p-4 font-black text-[#0B62C4]">Real Whole Food</td>
+              <td class="p-4 bg-[#FA4616]/10 text-[#FA4616] font-black">✅ 100% Wisconsin Milk</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ Ultra-Processed Paste</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ Fried Potato Starch</td>
+            </tr>
+            <tr class="hover:bg-[#FFFDF5]">
+              <td class="p-4 font-black text-[#0B62C4]">Clean Protein</td>
+              <td class="p-4 bg-[#FA4616]/10 text-[#FA4616] font-black">✅ 7g Natural Casein</td>
+              <td class="p-4 text-[#0B62C4]/70">⚠️ 15g (Powder Isolate)</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ 1g</td>
+            </tr>
+            <tr class="hover:bg-[#FFFDF5]">
+              <td class="p-4 font-black text-[#0B62C4]">Sugar & Crashes</td>
+              <td class="p-4 bg-[#FA4616]/10 text-[#FA4616] font-black">✅ 0g Added Sugar</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ 16g Sugar Alcohols</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ High Glycemic Index</td>
+            </tr>
+            <tr class="hover:bg-[#FFFDF5]">
+              <td class="p-4 font-black text-[#0B62C4]">Pocket Portability</td>
+              <td class="p-4 bg-[#FA4616]/10 text-[#FA4616] font-black">✅ Rigid Flip-Top Carton</td>
+              <td class="p-4 text-[#0B62C4]/70">⚠️ Melts in Heat</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ Crushed into Dust</td>
+            </tr>
+            <tr class="hover:bg-[#FFFDF5]">
+              <td class="p-4 font-black text-[#0B62C4]">Taste & Satisfaction</td>
+              <td class="p-4 bg-[#FA4616]/10 text-[#FA4616] font-black">✅ Fresh Creamy Mozzarella Pull</td>
+              <td class="p-4 text-[#0B62C4]/70">❌ Dry, Chalky Brick</td>
+              <td class="p-4 text-[#0B62C4]/70">⚠️ Greasy Salty Dust</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</section>

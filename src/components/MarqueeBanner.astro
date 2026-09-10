@@ -1,0 +1,42 @@
+---
+// src/components/MarqueeBanner.astro
+interface Props {
+  items?: string[];
+  bgClass?: string;
+  textClass?: string;
+  borderClass?: string;
+  reverse?: boolean;
+}
+
+const {
+  items = [
+    "SMALL SNACKS BIGGER DAYS",
+    "100% WISCONSIN WHOLE MILK",
+    "7G CLEAN PROTEIN",
+    "ONLY 80 CALORIES",
+    "PEEL • SNACK • REPEAT ◡",
+    "ZERO ADDED SUGAR",
+    "FLIP-TOP POCKET CARTON",
+    "CHEESE STICKS FOR A BRIGHTER YOU",
+  ],
+  bgClass = "bg-[#FFE042]",
+  textClass = "text-[#0B62C4]",
+  borderClass = "border-y-3 border-[#0B62C4]",
+  reverse = false,
+} = Astro.props;
+
+const repeatedItems = [...items, ...items, ...items];
+---
+
+<div class={`relative w-full overflow-hidden select-none py-3 sm:py-3.5 z-20 ${bgClass} ${borderClass}`}>
+  <div class={`flex items-center gap-6 whitespace-nowrap ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
+    {repeatedItems.map((item) => (
+      <div class="flex items-center gap-6">
+        <span class={`font-bubble text-xs sm:text-sm md:text-base font-black tracking-widest uppercase ${textClass}`}>
+          {item}
+        </span>
+        <span class="text-[#FA4616] text-base leading-none">✦</span>
+      </div>
+    ))}
+  </div>
+</div>

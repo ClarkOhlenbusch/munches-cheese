@@ -1,0 +1,98 @@
+---
+// MunchesLogo.astro - The MUNCHES wordmark, matched to the printed box front:
+// straight baseline, fat rounded bubble letters, creamy off-white face with a
+// warm gradient, a thick cheese-orange contour band, and a cream keyline
+// wrapping the outside of the orange. TM tucked at the top right of the S.
+interface Props {
+  class?: string;
+  float?: boolean;
+}
+
+const { class: className = '', float = true } = Astro.props;
+
+// Shared glyph geometry so every stacked layer registers perfectly.
+const glyph = {
+  x: 620,
+  y: 250,
+  'font-family': "'Fredoka', 'Titan One', sans-serif",
+  'font-weight': '700',
+  'font-size': '212',
+  'text-anchor': 'middle',
+  textLength: '1012',
+  lengthAdjust: 'spacingAndGlyphs',
+  'stroke-linejoin': 'round',
+  'stroke-linecap': 'round',
+  'paint-order': 'stroke fill',
+};
+---
+
+<div class={`relative w-full flex justify-center select-none px-2 sm:px-4 ${className}`}>
+  <div
+    id="munches-logo-float"
+    class="relative w-full flex justify-center transition-transform duration-500 ease-out"
+    style={float ? 'animation: subtleFloat 5s ease-in-out infinite;' : ''}
+  >
+    <svg
+      viewBox="0 0 1240 340"
+      class="w-full max-w-[94vw] 2xl:max-w-[1240px] h-auto overflow-visible"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="MUNCHES"
+    >
+      <defs>
+        <!-- Printed face: bright at the top, warm cream where the letters catch the box -->
+        <linearGradient id="munches-face" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFFFFF" />
+          <stop offset="38%" stop-color="#FFF9EC" />
+          <stop offset="78%" stop-color="#FDEFD6" />
+          <stop offset="100%" stop-color="#F7E2BE" />
+        </linearGradient>
+
+        <!-- Ambient lift off the background, not a hard 3D extrusion -->
+        <filter id="munches-lift" x="-12%" y="-25%" width="124%" height="160%">
+          <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#0B62C4" flood-opacity="0.32" />
+        </filter>
+      </defs>
+
+      <g filter="url(#munches-lift)">
+        <!-- 1. Outer cream keyline that rings the orange contour -->
+        <text {...glyph} fill="#FFF6E4" stroke="#FFF6E4" stroke-width="74">MUNCHES</text>
+
+        <!-- 2. The thick cheese-orange contour band -->
+        <text {...glyph} fill="#F0481D" stroke="#F0481D" stroke-width="54">MUNCHES</text>
+
+        <!-- 3. Creamy puffed letter face -->
+        <text
+          {...glyph}
+          fill="url(#munches-face)"
+          stroke="url(#munches-face)"
+          stroke-width="14"
+        >MUNCHES</text>
+      </g>
+
+      <!-- TM tucked above the shoulder of the S -->
+      <text
+        x="1152"
+        y="118"
+        font-family="'Fredoka', sans-serif"
+        font-weight="700"
+        font-size="34"
+        letter-spacing="1"
+        fill="#F0481D"
+      >TM</text>
+    </svg>
+  </div>
+</div>
+
+<script is:inline>
+  // Subtle interactive parallax tilt tracking cursor
+  const munchesLogo = document.getElementById('munches-logo-float');
+  if (munchesLogo && window.matchMedia('(pointer: fine)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX - innerWidth / 2) / (innerWidth / 2);
+      const y = (e.clientY - innerHeight / 2) / (innerHeight / 2);
+      munchesLogo.style.transform = `translateY(${y * 4}px) rotate(${x * 0.7}deg)`;
+    });
+  }
+</script>

@@ -1,0 +1,313 @@
+---
+// FlavorsLineup.astro
+---
+
+<section id="flavors" class="relative py-20 px-4 sm:px-6 md:px-8 bg-munches-sky text-munches-navy border-b-4 border-munches-navy">
+  
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Section Title -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-block bg-munches-yellow text-munches-navy text-xs font-black tracking-widest uppercase px-3 py-1 rounded-full border-2 border-munches-navy shadow-pop-sm mb-3">
+        THE FLAVOR ROTATION
+      </div>
+      <h2 class="font-bubble text-4xl sm:text-5xl md:text-6xl font-black text-munches-cream tracking-tight drop-shadow-[0_4px_0_#0E3A73] text-stroke-navy">
+        Pick Your Daily Habit.
+      </h2>
+      <p class="font-bold text-sm sm:text-base text-munches-navy mt-3 bg-munches-cream/90 inline-block px-4 py-1.5 rounded-xl border border-munches-navy shadow-sm">
+        Crafted from 100% pasture-raised rBST-free milk. Real natural aging, no oil fillers, zero processed junk.
+      </p>
+    </div>
+
+    <!-- Flavor Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      
+      <!-- 1. Original Mozzarella -->
+      <div class="bg-munches-cream border-4 border-munches-navy rounded-3xl p-6 shadow-pop-navy flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-200">
+        <div>
+          <!-- Flavor Badge & Color Header -->
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-munches-orange text-munches-cream text-xs font-black px-3 py-1 rounded-full border border-munches-navy uppercase">
+              THE OG BESTSELLER
+            </span>
+            <span class="text-xs font-black text-munches-navy bg-munches-yellow px-2 py-0.5 rounded-lg border border-munches-navy">
+              ★ 4.9 (4,210)
+            </span>
+          </div>
+
+          <!-- Illustrated Pack Art Representation -->
+          <div class="h-48 bg-[#FF521B] rounded-2xl border-3 border-munches-navy p-4 flex flex-col justify-between shadow-inner relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+            <div class="absolute -right-4 -bottom-4 w-28 h-28 bg-munches-cream/20 rounded-full"></div>
+            
+            <div class="flex justify-between items-start">
+              <span class="font-bubble text-2xl font-black text-munches-cream tracking-wider drop-shadow-sm">MUNCHES™</span>
+              <span class="text-[9px] font-black bg-munches-yellow text-munches-navy px-2 py-0.5 rounded-md border border-munches-navy">FLIP-TOP</span>
+            </div>
+
+            <div class="text-center py-2">
+              <span class="text-xs font-black text-munches-yellow uppercase tracking-widest block">ORIGINAL</span>
+              <span class="font-bubble text-xl font-black text-white">MOZZARELLA</span>
+            </div>
+
+            <div class="flex justify-between items-center text-[9px] font-black text-white uppercase border-t border-white/30 pt-1">
+              <span>7G PROTEIN</span>
+              <span>80 CAL</span>
+              <span>6 PACK</span>
+            </div>
+          </div>
+
+          <h3 class="font-bubble text-2xl font-black text-munches-navy mt-4 mb-1">
+            Original Mozzarella
+          </h3>
+          <p class="text-xs font-semibold text-munches-navy/80 leading-relaxed mb-4">
+            Low-moisture, whole milk creamy goodness with the legendary string pull. Pure, mild, clean dairy that melts perfectly in your mouth.
+          </p>
+
+          <div class="flex items-center gap-2 mb-4 text-xs font-black">
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">7g Protein</span>
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">80 Calories</span>
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">0g Sugar</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between text-sm font-black mb-3">
+            <span>PACK OF 6 STICKS</span>
+            <span class="text-base text-munches-orange font-bubble">$8.99</span>
+          </div>
+          <button 
+            class="btn-add-flavor w-full btn-tactile bg-munches-orange text-munches-cream py-2.5 rounded-2xl font-black text-sm uppercase border-2 border-munches-navy shadow-pop-sm flex items-center justify-center gap-2"
+            data-flavor="Original Mozzarella"
+            data-price="8.99"
+          >
+            <span>ADD TO STASH</span>
+            <span>+</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Smoked Gouda -->
+      <div class="bg-munches-cream border-4 border-munches-navy rounded-3xl p-6 shadow-pop-navy flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-[#B85D19] text-white text-xs font-black px-3 py-1 rounded-full border border-munches-navy uppercase">
+              BEECHWOOD SMOKED
+            </span>
+            <span class="text-xs font-black text-munches-navy bg-munches-yellow px-2 py-0.5 rounded-lg border border-munches-navy">
+              ★ 4.9 (2,890)
+            </span>
+          </div>
+
+          <div class="h-48 bg-[#B85D19] rounded-2xl border-3 border-munches-navy p-4 flex flex-col justify-between shadow-inner relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+            <div class="absolute -right-4 -bottom-4 w-28 h-28 bg-munches-cream/20 rounded-full"></div>
+            
+            <div class="flex justify-between items-start">
+              <span class="font-bubble text-2xl font-black text-munches-cream tracking-wider drop-shadow-sm">MUNCHES™</span>
+              <span class="text-[9px] font-black bg-munches-yellow text-munches-navy px-2 py-0.5 rounded-md border border-munches-navy">FLIP-TOP</span>
+            </div>
+
+            <div class="text-center py-2">
+              <span class="text-xs font-black text-munches-yellow uppercase tracking-widest block">NATURALLY AGED</span>
+              <span class="font-bubble text-xl font-black text-white">SMOKED GOUDA</span>
+            </div>
+
+            <div class="flex justify-between items-center text-[9px] font-black text-white uppercase border-t border-white/30 pt-1">
+              <span>7G PROTEIN</span>
+              <span>85 CAL</span>
+              <span>6 PACK</span>
+            </div>
+          </div>
+
+          <h3 class="font-bubble text-2xl font-black text-munches-navy mt-4 mb-1">
+            Smoked Gouda
+          </h3>
+          <p class="text-xs font-semibold text-munches-navy/80 leading-relaxed mb-4">
+            Naturally smoked over slow-burning applewood & beechwood embers. Rich, caramelized, and savory with an unmistakable velvet finish.
+          </p>
+
+          <div class="flex items-center gap-2 mb-4 text-xs font-black">
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">7g Protein</span>
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">85 Calories</span>
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">0g Sugar</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between text-sm font-black mb-3">
+            <span>PACK OF 6 STICKS</span>
+            <span class="text-base text-munches-orange font-bubble">$9.49</span>
+          </div>
+          <button 
+            class="btn-add-flavor w-full btn-tactile bg-munches-orange text-munches-cream py-2.5 rounded-2xl font-black text-sm uppercase border-2 border-munches-navy shadow-pop-sm flex items-center justify-center gap-2"
+            data-flavor="Smoked Gouda"
+            data-price="9.49"
+          >
+            <span>ADD TO STASH</span>
+            <span>+</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Spicy Pepper Jack -->
+      <div class="bg-munches-cream border-4 border-munches-navy rounded-3xl p-6 shadow-pop-navy flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-[#D12B28] text-white text-xs font-black px-3 py-1 rounded-full border border-munches-navy uppercase">
+              🌶️ KICK OF HEAT
+            </span>
+            <span class="text-xs font-black text-munches-navy bg-munches-yellow px-2 py-0.5 rounded-lg border border-munches-navy">
+              ★ 4.8 (1,940)
+            </span>
+          </div>
+
+          <div class="h-48 bg-[#D12B28] rounded-2xl border-3 border-munches-navy p-4 flex flex-col justify-between shadow-inner relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+            <div class="absolute -right-4 -bottom-4 w-28 h-28 bg-munches-cream/20 rounded-full"></div>
+            
+            <div class="flex justify-between items-start">
+              <span class="font-bubble text-2xl font-black text-munches-cream tracking-wider drop-shadow-sm">MUNCHES™</span>
+              <span class="text-[9px] font-black bg-munches-yellow text-munches-navy px-2 py-0.5 rounded-md border border-munches-navy">FLIP-TOP</span>
+            </div>
+
+            <div class="text-center py-2">
+              <span class="text-xs font-black text-munches-yellow uppercase tracking-widest block">HABANERO & JALAPEÑO</span>
+              <span class="font-bubble text-xl font-black text-white">SPICY PEPPER JACK</span>
+            </div>
+
+            <div class="flex justify-between items-center text-[9px] font-black text-white uppercase border-t border-white/30 pt-1">
+              <span>7G PROTEIN</span>
+              <span>80 CAL</span>
+              <span>6 PACK</span>
+            </div>
+          </div>
+
+          <h3 class="font-bubble text-2xl font-black text-munches-navy mt-4 mb-1">
+            Spicy Pepper Jack
+          </h3>
+          <p class="text-xs font-semibold text-munches-navy/80 leading-relaxed mb-4">
+            Monterey jack studded with diced green jalapeños, red bell peppers, and habanero flakes. Just enough tingle to wake up your afternoon.
+          </p>
+
+          <div class="flex items-center gap-2 mb-4 text-xs font-black">
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">7g Protein</span>
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">80 Calories</span>
+            <span class="bg-munches-sky/20 px-2 py-1 rounded-lg border border-munches-navy/20">0g Sugar</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between text-sm font-black mb-3">
+            <span>PACK OF 6 STICKS</span>
+            <span class="text-base text-munches-orange font-bubble">$8.99</span>
+          </div>
+          <button 
+            class="btn-add-flavor w-full btn-tactile bg-munches-orange text-munches-cream py-2.5 rounded-2xl font-black text-sm uppercase border-2 border-munches-navy shadow-pop-sm flex items-center justify-center gap-2"
+            data-flavor="Spicy Pepper Jack"
+            data-price="8.99"
+          >
+            <span>ADD TO STASH</span>
+            <span>+</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- The Carton Bundles Section (Wholesale Costco Spirit in a Cool Package) -->
+    <div class="bg-munches-cream border-4 border-munches-navy rounded-3xl p-6 sm:p-10 shadow-pop-navy-lg">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="bg-munches-yellow text-munches-navy text-xs font-black px-3 py-1 rounded-full border border-munches-navy uppercase">
+          WHOLESALE VOLUME • DIRECT TO YOUR DOOR
+        </span>
+        <h3 class="font-bubble text-3xl sm:text-4xl font-black text-munches-navy mt-2">
+          Stock The Fridge: The Carton Bundles
+        </h3>
+        <p class="text-xs sm:text-sm font-semibold text-munches-navy/80 mt-1">
+          Save big when you order like a Costco member, but receive pocket-ready flip-top boxes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Bundle 1 -->
+        <div class="bg-munches-ivory border-3 border-munches-navy rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="font-bubble text-xl font-black text-munches-navy">The Sampler Stash</div>
+            <div class="text-xs font-black text-munches-orange mb-3">3 Packs • 18 Sticks</div>
+            <p class="text-xs text-munches-navy/80 font-medium mb-4">
+              1x Original Mozzarella, 1x Smoked Gouda, 1x Spicy Pepper Jack.
+            </p>
+          </div>
+          <div>
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="font-bubble text-2xl font-black text-munches-navy">$25.99</span>
+              <span class="text-xs text-munches-navy/50 line-through">$27.50</span>
+            </div>
+            <button 
+              class="btn-add-flavor w-full btn-tactile bg-munches-navy text-munches-cream py-2 rounded-xl text-xs font-black uppercase border border-munches-navy shadow-pop-sm"
+              data-flavor="Sampler Stash (3 Packs)"
+              data-price="25.99"
+            >
+              Grab 3-Pack
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 2 (Featured) -->
+        <div class="bg-munches-yellow border-4 border-munches-navy rounded-2xl p-5 flex flex-col justify-between relative shadow-pop-sm transform md:-translate-y-2">
+          <div class="absolute -top-3 right-4 bg-munches-orange text-munches-cream px-2 py-0.5 rounded-full text-[10px] font-black uppercase border border-munches-navy">
+            MOST POPULAR
+          </div>
+          <div>
+            <div class="font-bubble text-xl font-black text-munches-navy">The Weekly Habit</div>
+            <div class="text-xs font-black text-munches-orange mb-3">6 Packs • 36 Sticks (1 Month Supply)</div>
+            <p class="text-xs text-munches-navy/90 font-semibold mb-4">
+              Your choice of flavors + insulated cold shipper. Keeps your snack drawer fully loaded.
+            </p>
+          </div>
+          <div>
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="font-bubble text-2xl font-black text-munches-navy">$49.99</span>
+              <span class="text-xs text-munches-navy/60 line-through">$55.00</span>
+              <span class="text-[10px] font-black text-munches-orange bg-munches-cream px-1.5 py-0.5 rounded">SAVE 15%</span>
+            </div>
+            <button 
+              class="btn-add-flavor w-full btn-tactile bg-munches-orange text-munches-cream py-2.5 rounded-xl text-xs font-black uppercase border-2 border-munches-navy shadow-pop-sm"
+              data-flavor="The Weekly Habit (6 Packs)"
+              data-price="49.99"
+            >
+              Order 6-Pack Carton
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 3 -->
+        <div class="bg-munches-ivory border-3 border-munches-navy rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="font-bubble text-xl font-black text-munches-navy">The Executive Carton</div>
+            <div class="text-xs font-black text-munches-orange mb-3">12 Packs • 72 Sticks (Wholesale)</div>
+            <p class="text-xs text-munches-navy/80 font-medium mb-4">
+              For gyms, offices, and hardcore cheese fiends. Free priority cold delivery included.
+            </p>
+          </div>
+          <div>
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="font-bubble text-2xl font-black text-munches-navy">$89.99</span>
+              <span class="text-xs text-munches-navy/50 line-through">$108.00</span>
+              <span class="text-[10px] font-black text-munches-green bg-munches-cream px-1.5 py-0.5 rounded">SAVE 25%</span>
+            </div>
+            <button 
+              class="btn-add-flavor w-full btn-tactile bg-munches-navy text-munches-cream py-2 rounded-xl text-xs font-black uppercase border border-munches-navy shadow-pop-sm"
+              data-flavor="Executive Carton (12 Packs)"
+              data-price="89.99"
+            >
+              Order Wholesale Carton
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

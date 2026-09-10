@@ -1,0 +1,114 @@
+---
+// src/components/StoriesSection.astro
+// Real life snack stories with editorial photography ("The Snack" section)
+---
+
+<section id="the-snack" class="relative w-full bg-[#FFFDF5] py-16 sm:py-24 px-4 sm:px-8 overflow-hidden border-b-4 border-[#0B62C4]">
+  
+  <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
+    
+    <!-- Section Header Tag -->
+    <div class="inline-flex items-center gap-2 bg-[#FFE042] text-[#0B62C4] border-3 border-[#0B62C4] px-4 py-1.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-wider shadow-[3px_3px_0px_#0B62C4] mb-4 hover:scale-105 transition-transform cursor-default">
+      <span>☀️</span>
+      <span>REAL LIFE SNACKING</span>
+    </div>
+
+    <h2 class="font-bubble text-3xl sm:text-5xl md:text-6xl font-black text-[#0B62C4] text-center leading-[1.05] tracking-tight max-w-3xl">
+      A LITTLE SOMETHING TO TAKE THE EDGE OFF
+    </h2>
+
+    <p class="font-bold text-sm sm:text-base md:text-lg text-[#0B62C4]/80 text-center max-w-2xl mt-4 leading-relaxed">
+      Whenever hunger hits between meetings, reps, or errands, Munches is the companion you always reach for.
+    </p>
+
+    <!-- 3 Curated Story Cards -->
+    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 sm:mt-16">
+      
+      <!-- Story 1: Desk Vibe -->
+      <div class="group bg-white border-4 border-[#0B62C4] rounded-3xl overflow-hidden shadow-[7px_7px_0px_#0B62C4] hover:-translate-y-2 transition-all flex flex-col justify-between">
+        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-[#FFE042]/20">
+          <img 
+            src="/story-desk.jpg" 
+            alt="Munches Cheese Sticks on Creative Desk Setup" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+          />
+          <div class="absolute top-3 left-3 bg-[#FFE042] text-[#0B62C4] border-2 border-[#0B62C4] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-xs">
+            💻 3:00 PM SLUMP
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bubble text-xl sm:text-2xl font-black text-[#0B62C4] leading-snug">
+              THE DESK HERO
+            </h3>
+            <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-2 leading-relaxed">
+              When your third cold brew isn't doing the trick and your calendar is stacked. Pull a fresh stick, unpeel the pull-tab, and reset your brain with real protein.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-[#0B62C4]/10 flex items-center justify-between text-xs font-black text-[#FA4616]">
+            <span>NO MESS ON KEYBOARD</span>
+            <span>7G PROTEIN ➔</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 2: Gym Duffel -->
+      <div class="group bg-white border-4 border-[#0B62C4] rounded-3xl overflow-hidden shadow-[7px_7px_0px_#0B62C4] hover:-translate-y-2 transition-all flex flex-col justify-between">
+        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-[#FFE042]/20">
+          <img 
+            src="/story-gym.jpg" 
+            alt="Munches in Gym Bag on Locker Bench" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+          />
+          <div class="absolute top-3 left-3 bg-[#FFE042] text-[#0B62C4] border-2 border-[#0B62C4] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-xs">
+            🏋️ POST-WORKOUT
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bubble text-xl sm:text-2xl font-black text-[#FA4616] leading-snug">
+              ZERO SHAKER BOTTLES
+            </h3>
+            <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-2 leading-relaxed">
+              Skip the chalky protein powders and smelly plastic shakers. Munches lives right in your gym bag, ready to fuel muscle repair the second your set wraps up.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-[#0B62C4]/10 flex items-center justify-between text-xs font-black text-[#0B62C4]">
+            <span>WHOLE-FOOD FUEL</span>
+            <span>80 CALORIES ➔</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 3: The Costco Run Legend -->
+      <div class="group bg-white border-4 border-[#0B62C4] rounded-3xl overflow-hidden shadow-[7px_7px_0px_#0B62C4] hover:-translate-y-2 transition-all flex flex-col justify-between">
+        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-gradient-to-br from-[#FFE042] to-[#FA4616]/20 flex items-center justify-center p-4">
+          <img 
+            src="/munches-product.png" 
+            alt="Munches Carton Package" 
+            class="w-44 h-auto drop-shadow-[0_16px_24px_rgba(250,70,22,0.3)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 ease-out"
+          />
+          <div class="absolute top-3 left-3 bg-[#FFE042] text-[#0B62C4] border-2 border-[#0B62C4] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-xs">
+            🛒 COSTCO RUN
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bubble text-xl sm:text-2xl font-black text-[#0B62C4] leading-snug">
+              THE FRIDGE PHANTOM
+            </h3>
+            <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/80 mt-2 leading-relaxed">
+              The pack that mysteriously vanishes from your crisper drawer within three days of grocery day. Loved by roommates, gym buddies, and midnight wanderers alike.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-[#0B62C4]/10 flex items-center justify-between text-xs font-black text-[#FA4616]">
+            <span>PEEL • SNACK • REPEAT</span>
+            <span>GRAB TWO PACKS ➔</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

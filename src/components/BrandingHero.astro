@@ -1,0 +1,237 @@
+---
+// BrandingHero.astro - Massive MUNCHES logo across the screen, exact cheese box background
+import MunchesLogo from './MunchesLogo.astro';
+---
+
+<div class="relative w-full min-h-screen bg-[#4FB2F0] overflow-hidden flex flex-col justify-between select-none">
+
+  <!-- ========================================================================= -->
+  <!-- BACKGROUND: THE CAMPAIGN BACKDROP                                         -->
+  <!-- Bright studio sky blue (#4FB2F0) with soft yellow paper blobs and the     -->
+  <!-- little hand-drawn yellow speed dashes scattered around the frame.         -->
+  <!-- ========================================================================= -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+
+    <svg
+      viewBox="0 0 1440 980"
+      preserveAspectRatio="xMidYMid slice"
+      class="w-full h-full"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="1440" height="980" fill="#4FB2F0" />
+
+      <!-- Big soft-edged yellow blobs bleeding off every corner -->
+      <g fill="#FFE04C">
+        <path d="M -120 -80 C 90 -140 320 -30 322 150 C 324 320 170 402 10 372 C -140 344 -230 40 -120 -80 Z" />
+        <path d="M -110 640 C 40 566 224 646 252 776 C 278 896 150 1010 -10 986 C -150 966 -220 720 -110 640 Z" />
+        <path d="M 1214 156 C 1400 88 1560 226 1548 424 C 1536 622 1372 726 1216 668 C 1064 612 1030 428 1084 296 C 1116 218 1150 180 1214 156 Z" />
+        <path d="M 690 878 C 800 828 924 872 936 940 C 946 1000 866 1046 762 1034 C 684 1024 626 908 690 878 Z" />
+        <path d="M 470 -70 C 596 -104 700 -34 692 42 C 684 116 580 152 486 130 C 402 110 380 -46 470 -70 Z" />
+      </g>
+
+      <!-- Hand-drawn yellow dashes -->
+      <g fill="#FFE04C">
+        <rect x="742" y="52" width="15" height="66" rx="7.5" transform="rotate(20 749 85)" />
+        <rect x="806" y="118" width="15" height="52" rx="7.5" transform="rotate(20 813 144)" />
+        <rect x="368" y="252" width="15" height="58" rx="7.5" transform="rotate(-16 375 281)" />
+        <rect x="1128" y="772" width="15" height="62" rx="7.5" transform="rotate(24 1135 803)" />
+        <rect x="1196" y="836" width="15" height="46" rx="7.5" transform="rotate(24 1203 859)" />
+        <rect x="96" y="470" width="15" height="54" rx="7.5" transform="rotate(-24 103 497)" />
+        <rect x="980" y="60" width="15" height="44" rx="7.5" transform="rotate(12 987 82)" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CONTENT LAYER                                                             -->
+  <!-- ========================================================================= -->
+  <div class="relative z-10 w-full flex-1 flex flex-col justify-between pt-4 sm:pt-6 pb-4 px-2 sm:px-6 max-w-[1550px] mx-auto">
+    
+    <!-- --------------------------------------------------------------------- -->
+    <!-- TOP: MASSIVE ARCHED "MUNCHES™" LOGO ACROSS ALMOST THE ENTIRE SCREEN    -->
+    <!-- --------------------------------------------------------------------- -->
+    <div class="w-full flex flex-col items-center text-center">
+      
+      <!-- Top Brand Identifier Pill -->
+      <div class="inline-flex items-center gap-2 bg-[#FFDC33] text-[#0B62C4] border-2 border-[#0B62C4] px-4 py-1 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase shadow-[3px_3px_0px_#0B62C4] mb-1">
+        <span>🧀 A CHEESE STICK BRAND CALLED MUNCHES</span>
+      </div>
+
+      <!-- FRONT AND CENTER: HUGE ARCHED "MUNCHES™" LOGO -->
+      <div class="w-full">
+        <MunchesLogo />
+      </div>
+
+      <!-- Brand Mission -->
+      <div class="max-w-2xl mx-auto mt-2 sm:mt-3 px-4">
+        <p class="font-bubble text-xl sm:text-2xl md:text-3xl font-bold text-[#FFFDF5] leading-tight text-stroke-navy drop-shadow-[0_3px_0_rgba(11,98,196,0.45)]">
+          "Just a little something to take the edge off."
+        </p>
+        <p class="text-xs sm:text-sm md:text-base font-bold text-[#FFFDF5]/95 mt-2 leading-relaxed drop-shadow-[0_1px_2px_rgba(11,98,196,0.55)]">
+          High quality cheese sticks built around taste, quality, macros, and affordability.
+          Packaged in a fun flip-top pack that opens from the top, with individually wrapped sticks inside.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- MIDDLE STAGING: THE CHEAT CODE STORY, MASCOT, & THE 3 BADGES          -->
+    <!-- --------------------------------------------------------------------- -->
+    <div class="w-full my-4 sm:my-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center px-2 sm:px-4">
+      
+      <!-- Left Column: The 3 Packaging Badges & The Viral Headline -->
+      <div class="lg:col-span-5 flex flex-col items-start text-left">
+        
+        <!-- The 3 Circular Badges (Direct from the box) -->
+        <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4">
+          
+          <!-- 1. Protein Badge (Royal Blue Circle) -->
+          <div class="flex items-center gap-2 bg-[#0B62C4] text-white px-3.5 py-2 rounded-2xl border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform">
+            <span class="font-bubble text-2xl font-black">7g</span>
+            <div class="text-[9px] font-black uppercase leading-tight">
+              PROTEIN<br /><span class="text-[#FFDC33]">PER STICK</span>
+            </div>
+          </div>
+
+          <!-- 2. Calories Badge (Orange Circle) -->
+          <div class="flex items-center gap-2 bg-[#FA4616] text-white px-3.5 py-2 rounded-2xl border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform">
+            <span class="font-bubble text-2xl font-black">80</span>
+            <div class="text-[9px] font-black uppercase leading-tight">
+              CALORIES<br /><span class="text-[#FDF0D5]">CLEAN FUEL</span>
+            </div>
+          </div>
+
+          <!-- 3. Real Cheese Badge (Green Circle with Leaf) -->
+          <div class="flex items-center gap-2 bg-[#009B66] text-white px-3.5 py-2 rounded-2xl border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform">
+            <svg class="w-5 h-5 fill-current text-[#FFDC33]" viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+            <div class="text-[9px] font-black uppercase leading-tight">
+              100% REAL<br /><span class="text-[#FDF0D5]">CHEESE</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- The Headline from the Image -->
+        <div class="relative mb-3">
+          <h2 class="font-bubble text-3xl sm:text-5xl md:text-6xl font-black leading-[0.94] text-[#FFFDF5] tracking-tight drop-shadow-[0_4px_0_#0B62C4] text-stroke-navy">
+            just a little<br />
+            something<br />
+            to take<br />
+            <span class="text-[#FFDC33] inline-flex items-center gap-2">
+              the edge off
+              <span class="text-xl sm:text-2xl text-[#FFDC33]">\\\</span>
+            </span>
+          </h2>
+          
+          <div class="inline-block text-[#FFFDF5] px-1 py-1 font-black text-[11px] sm:text-xs tracking-[0.28em] uppercase mt-3 drop-shadow-[0_2px_3px_rgba(11,98,196,0.5)]">
+            THE CHEESE STICK CHEAT CODE.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: The Authentic Brand Story & Mascot with Shades -->
+      <div class="lg:col-span-7 flex flex-col justify-between">
+        
+        <!-- The Story Card (Costco Revelation + TikTok Spark) -->
+        <div class="bg-[#FFFDF6]/95 backdrop-blur-sm text-[#0E3D7D] rounded-3xl p-5 sm:p-6 shadow-[6px_6px_0px_#0B62C4] border-3 border-[#0B62C4] mb-3">
+          <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FA4616] mb-2">
+            <span>💡 THE STORY BEHIND MUNCHES</span>
+          </div>
+          <p class="text-xs sm:text-sm md:text-base font-bold leading-relaxed text-[#0E3D7D] mb-3">
+            "I really like cheese sticks, and I normally just buy the super generic brand from Costco because they are cheap and their macros are insanely good—better than most protein bars, pre-packed, and healthier. It's such a cheat code for healthy eating on the go.
+          </p>
+          <p class="text-xs sm:text-sm md:text-base font-bold leading-relaxed text-[#0E3D7D]">
+            One day I saw this joke on TikTok where someone took a cheese stick and held it like a cig and said <strong class="text-[#FA4616]">'just a little something to take the edge off'</strong>—and that idea could be the entire branding. High quality cheese sticks, with different flavors, built around taste, quality, macros, and affordability. In a fun package that opens like a cig pack from the top, with the cheese sticks inside, individually wrapped."
+          </p>
+        </div>
+
+        <!-- Mascot with Sunglasses & Yellow Speech Sticker -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          
+          <!-- Mascot Graphic Callout -->
+          <div class="flex items-center gap-3 bg-[#FDF0D5] border-2 border-[#0B62C4] px-4 py-2 rounded-2xl shadow-sm">
+            <div class="w-8 h-14 bg-[#FFFDF5] rounded-full border-2 border-[#0B62C4] flex flex-col items-center pt-2 relative shadow-inner animate-wiggle-slow">
+              <!-- Sunglasses -->
+              <div class="w-6 h-2 bg-black rounded-xs flex items-center justify-around px-0.5">
+                <div class="w-2 h-1 bg-black border-t border-white"></div>
+                <div class="w-2 h-1 bg-black border-t border-white"></div>
+              </div>
+              <div class="text-[8px] font-black text-[#0B62C4] mt-1">◡</div>
+            </div>
+            
+            <div class="text-left">
+              <div class="font-bubble text-xs sm:text-sm font-black text-[#0B62C4] leading-tight">
+                SMALL SNACKS<br /><span class="text-[#FA4616]">BIGGER DAYS</span>
+              </div>
+              <div class="text-[10px] font-bold text-[#0E3D7D]/70">PEEL • SNACK • REPEAT ◡</div>
+            </div>
+          </div>
+
+          <!-- Yellow Organic Blob Sticker (same shape language as the campaign art) -->
+          <div
+            class="bg-[#FFE04C] text-[#0B62C4] px-6 py-4 text-center shadow-[0_6px_0_rgba(11,98,196,0.18)]"
+            style="border-radius: 48% 52% 44% 56% / 56% 44% 56% 44%;"
+          >
+            <div class="font-bubble text-xs font-black leading-tight">
+              SAME GREAT CHEESE.<br />
+              <span class="text-[#FA4616]">BRIGHTER ATTITUDE.</span>
+            </div>
+            <div class="font-black text-xs leading-none mt-0.5">◡</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BOTTOM STRIP: BENEFIT ICONS & NET WEIGHT SPEC (Matching the box bottom) -->
+    <!-- --------------------------------------------------------------------- -->
+    <div class="w-full pt-3 pb-1 border-t-2 border-white/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-xs font-black uppercase text-[#FFFDF5]">
+      
+      <!-- Four Benefit Icons from the Bottom of the Image -->
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-[#FFDC33] fill-current" viewBox="0 0 24 24">
+            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+          </svg>
+          <span>REAL INGREDIENTS</span>
+        </div>
+
+        <span class="opacity-50">|</span>
+
+        <div class="flex items-center gap-1.5">
+          <span>💪</span>
+          <span>7G PROTEIN</span>
+        </div>
+
+        <span class="opacity-50">|</span>
+
+        <div class="flex items-center gap-1.5">
+          <span class="text-[#FFDC33]">💙</span>
+          <span>80 CALORIES</span>
+        </div>
+
+        <span class="opacity-50">|</span>
+
+        <div class="flex items-center gap-1.5">
+          <span>☀️</span>
+          <span>A BRIGHTER YOU</span>
+        </div>
+      </div>
+
+      <!-- Packaging Spec -->
+      <div class="text-[#FFDC33] tracking-wider text-center sm:text-right">
+        6 INDIVIDUALLY WRAPPED CHEESE STICKS • NET WT 6 OZ (170g)
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

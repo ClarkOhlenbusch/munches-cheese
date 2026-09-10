@@ -1,0 +1,115 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "MUNCHES™ : Just a Little Something to Take the Edge Off",
+  description = "A cheese stick brand called Munches. 100% whole-milk mozzarella cheese sticks in a flip-top pocket pack. The ultimate Costco macro cheat code.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF521B'/><circle cx='50' cy='50' r='30' fill='%23FFF7E8'/><text x='50' y='60' font-size='32' text-anchor='middle' font-family='sans-serif' font-weight='bold' fill='%23FF521B'>M</text></svg>" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/munches-hero.png" />
+
+    <title>{title}</title>
+  </head>
+  <!-- Carton background: warm creamy off-white (#FFFDF5) -->
+  <body class="bg-[#FFFDF5] text-[#0B62C4] antialiased selection:bg-[#FFE042] selection:text-[#0B62C4]">
+    
+    <!-- Main Content Slot -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+
+    <!-- Inertia Scrolling with Lenis + Scroll-Triggered Reveal Effects -->
+    <script>
+      import Lenis from 'lenis';
+
+      function initInteractive() {
+        // 1. Lenis Smooth Momentum / Inertia Scrolling
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 1.2,
+          infinite: false,
+        });
+
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Connect Lenis to anchor links (#the-pack, #macros, #the-snack, #find-stores)
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+            if (href && href !== '#') {
+              const target = document.querySelector(href);
+              if (target) {
+                e.preventDefault();
+                lenis.scrollTo(target as HTMLElement, { offset: -30, duration: 1.2 });
+              }
+            }
+          });
+        });
+
+        // 2. Scroll Reveal Animations (progressive enhancement)
+        const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale, .reveal-fade');
+        if ('IntersectionObserver' in window && revealElements.length > 0) {
+          document.documentElement.classList.add('has-scroll-reveal');
+
+          const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px',
+          });
+
+          revealElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              el.classList.add('is-revealed');
+            }
+            revealObserver.observe(el);
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initInteractive);
+      } else {
+        initInteractive();
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,479 @@
+---
+// Hero.astro - Matches the exact cheese box background & arched MUNCHES typography front and center
+import MunchesLogo from './MunchesLogo.astro';
+---
+
+<section id="hero" class="relative w-full overflow-hidden">
+  
+  <!-- ================================================================= -->
+  <!-- ZONE 1: CREAM OFF-WHITE TOP BACKGROUND (Matching the top of the box) -->
+  <!-- ================================================================= -->
+  <div class="relative bg-[#FFF6E5] pt-6 pb-12 px-4 sm:px-6 md:px-8 text-center flex flex-col items-center justify-center">
+    
+    <!-- Top Pill: Brand Identifier -->
+    <div class="inline-flex items-center gap-2 bg-[#FFE042] border-2 border-[#0E3A73] px-4 py-1 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase shadow-[3px_3px_0px_#0E3A73] mb-4 animate-bounce">
+      <span>🧀 A CHEESE STICK BRAND CALLED MUNCHES</span>
+      <span class="w-2 h-2 rounded-full bg-[#FF521B] animate-ping"></span>
+    </div>
+
+    <!-- FRONT AND CENTER: ARCHED "MUNCHES™" LOGO WITH SLIGHT MOVEMENT -->
+    <div class="w-full max-w-5xl mx-auto my-2">
+      <MunchesLogo />
+    </div>
+
+    <!-- Brand Explanation directly underneath front and center -->
+    <div class="max-w-2xl mx-auto mt-4 px-4">
+      <p class="font-bubble text-xl sm:text-2xl md:text-3xl font-black text-[#FF521B] leading-snug drop-shadow-sm">
+        "Just a little something to take the edge off."
+      </p>
+      <p class="text-sm sm:text-base md:text-lg font-bold text-[#0E3A73] mt-2 leading-relaxed">
+        The ultimate Costco macro cheat code—100% whole-milk mozzarella cheese sticks—reborn in a pocket-sized flip-top carton. Better macros than protein bars, zero artificial junk, pure satisfaction.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- ZONE 2: ORGANIC MELTED CHEESE WAVE DIVIDER (Exact box transition) -->
+  <!-- ================================================================= -->
+  <div class="relative w-full leading-none -mt-1 z-20 pointer-events-none">
+    <svg 
+      viewBox="0 0 1440 160" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg" 
+      class="w-full h-16 sm:h-24 md:h-32 object-cover preserve-3d"
+    >
+      <!-- Liquid Melted Cheese Wave Path -->
+      <path 
+        d="M0,0 C220,110 440,30 720,95 C1020,165 1240,40 1440,90 L1440,160 L0,160 Z" 
+        fill="#FF521B"
+      />
+      <!-- Wave Highlight Contour -->
+      <path 
+        d="M0,0 C220,110 440,30 720,95 C1020,165 1240,40 1440,90" 
+        stroke="#E0400C" 
+        stroke-width="5" 
+        fill="none"
+      />
+    </svg>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- ZONE 3: CHEESE ORANGE BOTTOM BACKGROUND (Matching the box bottom) -->
+  <!-- ================================================================= -->
+  <div class="relative bg-[#FF521B] pt-4 pb-20 px-4 sm:px-6 md:px-8 text-[#FFF7E8]">
+    
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Grid Layout within the Orange Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: Badges & Brand Ethos Pitch -->
+        <div class="lg:col-span-4 flex flex-col items-start text-left z-20">
+          
+          <!-- The 3 Circular Badges from the box -->
+          <div class="space-y-3 mb-6">
+            <div class="text-xs font-black uppercase tracking-widest text-[#FFE042]">
+              ✦ NUTRITIONAL CHEAT CODE
+            </div>
+            
+            <!-- 1. Protein Badge (Dark Royal Blue circle) -->
+            <div class="flex items-center gap-3 bg-[#1A4B8C] text-white p-3 rounded-2xl border-3 border-[#0E3A73] shadow-[4px_4px_0px_#0E3A73] hover:scale-105 transition-transform w-full sm:w-auto">
+              <div class="w-12 h-12 rounded-full bg-[#103D75] border-2 border-white flex flex-col items-center justify-center font-black">
+                <span class="text-lg leading-none font-bubble">7g</span>
+                <span class="text-[7px] uppercase tracking-tighter">PRO</span>
+              </div>
+              <div class="text-xs font-black uppercase leading-tight tracking-wider">
+                7G PURE PROTEIN<br />
+                <span class="text-[#FFE042] text-[10px]">WHOLE MILK MOZZARELLA</span>
+              </div>
+            </div>
+
+            <!-- 2. Calories Badge (Orange circle) -->
+            <div class="flex items-center gap-3 bg-[#FF6B2B] text-white p-3 rounded-2xl border-3 border-[#0E3A73] shadow-[4px_4px_0px_#0E3A73] hover:scale-105 transition-transform w-full sm:w-auto">
+              <div class="w-12 h-12 rounded-full bg-[#E5531B] border-2 border-white flex flex-col items-center justify-center font-black">
+                <span class="text-lg leading-none font-bubble">80</span>
+                <span class="text-[7px] uppercase tracking-tighter">CAL</span>
+              </div>
+              <div class="text-xs font-black uppercase leading-tight tracking-wider">
+                80 CLEAN CALORIES<br />
+                <span class="text-[#FFF7E8] text-[10px]">ZERO ADDED SUGAR</span>
+              </div>
+            </div>
+
+            <!-- 3. Real Cheese Badge (Emerald Green circle) -->
+            <div class="flex items-center gap-3 bg-[#009B66] text-white p-3 rounded-2xl border-3 border-[#0E3A73] shadow-[4px_4px_0px_#0E3A73] hover:scale-105 transition-transform w-full sm:w-auto">
+              <div class="w-12 h-12 rounded-full bg-[#007A50] border-2 border-white flex flex-col items-center justify-center text-white">
+                <svg class="w-6 h-6 fill-current text-[#FFE042]" viewBox="0 0 24 24">
+                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+              </div>
+              <div class="text-xs font-black uppercase leading-tight tracking-wider">
+                100% REAL CHEESE<br />
+                <span class="text-[#FFF7E8] text-[10px]">MILK, SALT & ENZYMES</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch gap-3 w-full">
+            <button 
+              id="hero-order-btn"
+              class="btn-tactile bg-[#FFE042] text-[#0E3A73] font-bubble text-lg sm:text-xl px-6 py-3 rounded-2xl border-3 border-[#0E3A73] shadow-[4px_4px_0px_#0E3A73] flex items-center justify-center gap-2"
+            >
+              <span>GRAB A CARTON</span>
+              <span>➔</span>
+            </button>
+            
+            <button 
+              id="trigger-flip-pack-btn"
+              class="btn-tactile bg-[#FFF6E5] text-[#0E3A73] font-black text-xs uppercase px-4 py-3 rounded-2xl border-3 border-[#0E3A73] shadow-[3px_3px_0px_#0E3A73] flex items-center justify-center gap-1.5"
+            >
+              <span>⚡</span>
+              <span>FLIP OPEN PACK</span>
+            </button>
+          </div>
+
+          <!-- Packaging spec callout -->
+          <div class="mt-4 text-[11px] font-black uppercase text-[#FFF7E8]/90 tracking-wider">
+            📦 6 Individually Wrapped Sticks • Net Wt 6 OZ (170g)
+          </div>
+
+        </div>
+
+        <!-- Center: Interactive 3D Flip-Top Cigarette Carton -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
+          
+          <!-- Card Container for Flip Box -->
+          <div class="w-full max-w-sm bg-[#FFF6E5] text-[#0E3A73] border-4 border-[#0E3A73] rounded-3xl p-5 shadow-[8px_8px_0px_#0E3A73] relative z-20">
+            
+            <div class="flex items-center justify-between border-b-2 border-[#0E3A73]/20 pb-2 mb-3">
+              <span class="text-[11px] font-black uppercase tracking-wider text-[#FF521B]">
+                THE PULL-TOP PACK
+              </span>
+              <span class="text-[10px] font-bold text-[#0E3A73]/70 uppercase">
+                FLIP TO SNACK ◡
+              </span>
+            </div>
+
+            <!-- THE 3D FLIP-TOP CARTON -->
+            <div class="relative flex flex-col items-center justify-center min-h-[360px]">
+              
+              <div 
+                id="flip-carton-box" 
+                class="relative w-56 h-80 cursor-pointer select-none group"
+              >
+                <!-- TOP FLIP LID -->
+                <div 
+                  id="flip-lid"
+                  class="absolute top-0 left-0 w-full h-24 rounded-t-2xl border-4 border-[#0E3A73] z-40 transition-all duration-500 origin-top shadow-md"
+                  style="background-color: #FF521B; transform-style: preserve-3d;"
+                >
+                  <!-- Front of Lid -->
+                  <div id="lid-front" class="absolute inset-0 bg-[#FF521B] rounded-t-xl flex flex-col items-center justify-center p-2">
+                    <span class="text-[9px] font-black text-[#FFE042] uppercase tracking-widest">
+                      FLIP TOP • POCKET CARTON
+                    </span>
+                    <span class="text-xs font-bubble text-[#FFF7E8] mt-0.5">MUNCHES™</span>
+                  </div>
+
+                  <!-- Inside of Lid: Reveals "GOOD SNACKS BRIGHTER DAYS ◡" -->
+                  <div 
+                    id="lid-interior" 
+                    class="absolute inset-0 bg-[#E85A1E] rounded-t-xl p-2 flex flex-col items-center justify-center text-center opacity-0 transition-opacity duration-300"
+                  >
+                    <span class="text-[10px] font-black text-white uppercase tracking-wider">GOOD SNACKS</span>
+                    <span class="text-[10px] font-black text-white uppercase tracking-wider">BRIGHTER DAYS</span>
+                    <span class="text-xs font-black text-white mt-0.5">◡</span>
+                  </div>
+                </div>
+
+                <!-- CARTON INTERIOR: CHEESE STICKS -->
+                <div id="carton-interior-sticks" class="absolute top-10 left-3 right-3 h-48 bg-[#D33D0D] rounded-t-xl border-2 border-[#0E3A73]/50 p-2 flex items-end justify-center gap-1.5 overflow-hidden z-20">
+                  <div class="w-6 h-36 bg-[#FFF4DC] rounded-t-md border border-[#0E3A73]/30 relative flex flex-col items-center pt-2">
+                    <span class="text-[6px] font-black text-[#FF521B] -rotate-90">MUNCHES</span>
+                  </div>
+                  <div class="w-6 h-38 bg-[#FFF7E8] rounded-t-md border border-[#0E3A73]/30 relative flex flex-col items-center pt-2">
+                    <span class="text-[6px] font-black text-[#FF521B] -rotate-90">MUNCHES</span>
+                  </div>
+                  
+                  <!-- Elevated stick ready to pull -->
+                  <div 
+                    id="pulled-cheese-stick"
+                    class="w-8 h-44 bg-[#FFFDF5] rounded-t-md border-2 border-[#0E3A73] relative flex flex-col items-center pt-2 shadow-sm cursor-pointer hover:translate-y-[-8px] transition-transform z-30"
+                    title="Click to pull this stick!"
+                  >
+                    <div class="text-[5px] font-black text-[#0E3A73] leading-tight text-center">
+                      PEEL<br />SNACK<br />REPEAT<br />◡
+                    </div>
+                    <div class="mt-4 text-[8px] font-black text-[#FF521B] -rotate-90 origin-center font-bubble">
+                      MUNCHES
+                    </div>
+                    <span class="absolute -top-3 w-4 h-2 bg-[#FFE042] rounded-full border border-[#0E3A73] text-[7px] font-black flex items-center justify-center">
+                      ▲
+                    </span>
+                  </div>
+
+                  <div class="w-6 h-38 bg-[#FFF7E8] rounded-t-md border border-[#0E3A73]/30 relative flex flex-col items-center pt-2">
+                    <span class="text-[6px] font-black text-[#FF521B] -rotate-90">MUNCHES</span>
+                  </div>
+                  <div class="w-6 h-36 bg-[#FFF4DC] rounded-t-md border border-[#0E3A73]/30 relative flex flex-col items-center pt-2">
+                    <span class="text-[6px] font-black text-[#FF521B] -rotate-90">MUNCHES</span>
+                  </div>
+                </div>
+
+                <!-- LOWER CARTON BODY (Front Face of Box) -->
+                <div class="absolute bottom-0 left-0 w-full h-64 bg-[#FF521B] rounded-b-2xl border-4 border-[#0E3A73] overflow-hidden z-30 flex flex-col justify-between p-3.5 shadow-[6px_6px_0px_#0E3A73]">
+                  
+                  <!-- Cream Top Wave of Box -->
+                  <div class="absolute top-0 left-0 right-0 h-28 bg-[#FFF6E5] rounded-b-[40px] border-b-4 border-[#0E3A73] -z-0"></div>
+
+                  <!-- Front: Arched MUNCHES Mini -->
+                  <div class="relative z-10 text-center mt-1">
+                    <div class="flex items-center justify-center">
+                      <span class="font-bubble text-3xl font-black tracking-wide text-[#FFFDF4] drop-shadow-[0_2px_0_#FF521B] text-stroke-navy">
+                        MUNCHES
+                      </span>
+                      <span class="font-bold text-[8px] text-[#FF521B] ml-0.5 self-start">TM</span>
+                    </div>
+                    <div class="text-[9px] font-black text-[#10448A] uppercase tracking-wider -mt-1">
+                      — ORIGINAL MOZZARELLA —
+                    </div>
+                  </div>
+
+                  <!-- Middle Badges + Mascot -->
+                  <div class="relative z-10 flex items-center justify-between px-1 my-2">
+                    <div class="flex flex-col gap-1">
+                      <div class="w-7 h-7 rounded-full bg-[#1A4B8C] border border-white text-white flex flex-col items-center justify-center">
+                        <span class="text-[8px] font-black leading-none">7g</span>
+                        <span class="text-[5px] font-bold">PRO</span>
+                      </div>
+                      <div class="w-7 h-7 rounded-full bg-[#FF6B2B] border border-white text-white flex flex-col items-center justify-center">
+                        <span class="text-[8px] font-black leading-none">80</span>
+                        <span class="text-[5px] font-bold">CAL</span>
+                      </div>
+                      <div class="w-7 h-7 rounded-full bg-[#009B66] border border-white text-white flex flex-col items-center justify-center">
+                        <span class="text-[6px]">🍃</span>
+                      </div>
+                    </div>
+
+                    <!-- Mascot stick with sunglasses -->
+                    <div class="w-8 h-16 bg-[#FFF9ED] rounded-full border-2 border-[#0E3A73] flex flex-col items-center pt-2 relative shadow-inner">
+                      <div class="w-6 h-2 bg-black rounded-xs flex items-center justify-around px-0.5">
+                        <div class="w-2 h-1 bg-black border-t border-white/60"></div>
+                        <div class="w-2 h-1 bg-black border-t border-white/60"></div>
+                      </div>
+                      <div class="text-[8px] font-black text-[#0E3A73] mt-1">◡</div>
+                    </div>
+                  </div>
+
+                  <!-- Bottom of Box -->
+                  <div class="relative z-10 flex items-center justify-between text-[7px] font-black text-white border-t border-white/40 pt-1 uppercase">
+                    <span>6 INDIVIDUALLY WRAPPED</span>
+                    <span>NET WT 6 OZ</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Pack Controls -->
+              <div class="flex items-center gap-1.5 mt-3 z-40">
+                <button id="action-toggle-lid" class="btn-tactile bg-[#0E3A73] text-[#FFF7E8] px-2.5 py-1.5 rounded-xl text-[11px] font-black uppercase shadow-sm">
+                  🔓 Flip Open
+                </button>
+                <button id="action-pull-stick" class="btn-tactile bg-[#FF521B] text-[#FFF7E8] px-2.5 py-1.5 rounded-xl text-[11px] font-black uppercase shadow-sm">
+                  🧀 Pull Stick
+                </button>
+                <button id="action-peel-snack" class="btn-tactile bg-[#009B66] text-white px-2.5 py-1.5 rounded-xl text-[11px] font-black uppercase shadow-sm">
+                  ✨ Peel & Snack
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right: Mascot Blob & "Take the Edge Off" Copy (Matching the box) -->
+        <div class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+          
+          <!-- Organic Creamy Mascot Blob (Just like on the orange face of the box!) -->
+          <div class="bg-[#FFF6E5] text-[#0E3A73] border-4 border-[#0E3A73] rounded-3xl p-5 shadow-[6px_6px_0px_#0E3A73] relative mb-6 w-full max-w-xs">
+            <div class="flex items-center gap-4">
+              <!-- Anthropomorphic mascot with sunglasses -->
+              <div class="w-14 h-24 bg-[#FFF8ED] rounded-full border-3 border-[#0E3A73] flex flex-col items-center pt-3 relative shadow-inner flex-shrink-0 animate-wiggle">
+                <!-- Yellow Sunburst rays -->
+                <div class="absolute -top-2 text-[#FFE042] text-xs font-black select-none">✦ ✦</div>
+                <!-- Sunglasses -->
+                <div class="w-10 h-3 bg-black rounded-sm flex items-center justify-around px-0.5 mt-2">
+                  <div class="w-3.5 h-2 bg-black border-t border-white/80"></div>
+                  <div class="w-3.5 h-2 bg-black border-t border-white/80"></div>
+                </div>
+                <!-- Smile -->
+                <div class="text-xs font-black text-[#0E3A73] mt-2">◡</div>
+                <!-- Cheese fibers -->
+                <div class="w-0.5 h-6 bg-[#FF521B]/20 absolute bottom-1 left-2"></div>
+                <div class="w-0.5 h-8 bg-[#FF521B]/20 absolute bottom-1 right-2"></div>
+              </div>
+
+              <!-- Mascot Copy from the box -->
+              <div>
+                <div class="font-bubble text-base sm:text-lg font-black text-[#0E3A73] leading-tight">
+                  SMALL SNACKS<br />
+                  <span class="text-[#FF521B]">BIGGER DAYS</span>
+                </div>
+                <div class="text-[11px] font-bold text-[#0E3A73]/70 mt-1">
+                  100% Real Wisconsin Mozzarella
+                </div>
+              </div>
+            </div>
+
+            <!-- Smiley on the side spine reminder -->
+            <div class="mt-3 pt-2 border-t-2 border-[#0E3A73]/20 flex items-center justify-between text-[10px] font-black text-[#0E3A73] uppercase">
+              <span>SNACK BETTER OFTEN</span>
+              <span class="text-base">:)</span>
+            </div>
+          </div>
+
+          <!-- Yellow Sticker Bubble from the box -->
+          <div class="bg-[#FFE042] text-[#0E3A73] border-3 border-[#0E3A73] p-4 rounded-3xl shadow-[4px_4px_0px_#0E3A73] transform rotate-2 max-w-xs">
+            <div class="font-bubble text-xs sm:text-sm font-black leading-tight text-center">
+              SAME GREAT CHEESE.<br />
+              <span class="text-[#FF521B]">BRIGHTER ATTITUDE.</span>
+            </div>
+            <div class="text-center font-black text-base mt-0.5">◡</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Peel Reward Modal -->
+  <div id="peel-reward-modal" class="fixed inset-0 z-50 bg-[#0E3A73]/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-[#FFF6E5] border-4 border-[#0E3A73] rounded-3xl p-6 max-w-sm w-full shadow-[8px_8px_0px_#0E3A73] text-center">
+      <div class="w-16 h-16 mx-auto bg-[#FFE042] rounded-full border-3 border-[#0E3A73] flex items-center justify-center text-3xl shadow-sm mb-3">
+        🧀
+      </div>
+      <div class="font-bubble text-2xl font-black text-[#FF521B]">
+        EDGE TAKEN OFF!
+      </div>
+      <div class="text-xs font-black uppercase text-[#0E3A73] tracking-wider mt-1">
+        +7G PROTEIN • 80 CALORIES UNLOCKED
+      </div>
+      <p class="text-xs text-[#0E3A73]/80 font-bold my-3 leading-relaxed">
+        You just experienced the cheese stick cheat code. Zero sugar, pure calcium and whole milk dairy protein.
+      </p>
+      <div class="bg-[#FF521B]/10 rounded-xl p-2.5 border border-[#0E3A73]/30 text-[11px] font-black text-[#0E3A73] mb-4">
+        "Just a little something to take the edge off." 🚬❌ 🧀✅
+      </div>
+      <button id="close-peel-modal" class="w-full btn-tactile bg-[#FF521B] text-[#FFF7E8] py-2.5 rounded-xl font-bubble text-lg border-2 border-[#0E3A73] shadow-sm">
+        SNACK ANOTHER STICK
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- Client scripts for flip pack -->
+<script is:inline>
+  const flipLid = document.getElementById('flip-lid');
+  const lidFront = document.getElementById('lid-front');
+  const lidInterior = document.getElementById('lid-interior');
+  const pulledStick = document.getElementById('pulled-cheese-stick');
+  const actionToggleLid = document.getElementById('action-toggle-lid');
+  const actionPullStick = document.getElementById('action-pull-stick');
+  const actionPeelSnack = document.getElementById('action-peel-snack');
+  const triggerFlipBtn = document.getElementById('trigger-flip-pack-btn');
+
+  let isLidOpen = false;
+  let isStickPulled = false;
+
+  function toggleLid() {
+    isLidOpen = !isLidOpen;
+    if (window.MunchesSound) window.MunchesSound.playFlipPack();
+
+    if (isLidOpen) {
+      flipLid.style.transform = 'rotateX(-120deg) translateY(-20px)';
+      lidFront.style.opacity = '0';
+      lidInterior.style.opacity = '1';
+      lidInterior.style.transform = 'rotateX(180deg)';
+      if (actionToggleLid) actionToggleLid.textContent = '🔒 Shut Lid';
+    } else {
+      flipLid.style.transform = 'rotateX(0deg) translateY(0px)';
+      lidFront.style.opacity = '1';
+      lidInterior.style.opacity = '0';
+      if (actionToggleLid) actionToggleLid.textContent = '🔓 Flip Open';
+      if (isStickPulled) resetStick();
+    }
+  }
+
+  function pullStick() {
+    if (!isLidOpen) toggleLid();
+    if (window.MunchesSound) window.MunchesSound.playStickPull();
+    isStickPulled = true;
+    if (pulledStick) pulledStick.style.transform = 'translateY(-50px) scale(1.08)';
+  }
+
+  function resetStick() {
+    isStickPulled = false;
+    if (pulledStick) pulledStick.style.transform = 'translateY(0px) scale(1)';
+  }
+
+  if (flipLid) flipLid.addEventListener('click', toggleLid);
+  if (actionToggleLid) actionToggleLid.addEventListener('click', toggleLid);
+  if (triggerFlipBtn) triggerFlipBtn.addEventListener('click', () => {
+    if (!isLidOpen) toggleLid();
+    document.getElementById('flip-carton-box')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  if (pulledStick) pulledStick.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!isLidOpen) {
+      toggleLid();
+      setTimeout(pullStick, 300);
+    } else {
+      pullStick();
+    }
+  });
+  if (actionPullStick) actionPullStick.addEventListener('click', pullStick);
+
+  const peelRewardModal = document.getElementById('peel-reward-modal');
+  const closePeelModal = document.getElementById('close-peel-modal');
+
+  if (actionPeelSnack) {
+    actionPeelSnack.addEventListener('click', () => {
+      if (!isStickPulled) pullStick();
+      setTimeout(() => {
+        if (window.MunchesSound) {
+          window.MunchesSound.playPeelSound();
+          setTimeout(() => window.MunchesSound.playBiteSound(), 200);
+        }
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#FF521B', '#FFE042', '#FFF6E5', '#1A4B8C', '#009B66']
+          });
+        }
+        peelRewardModal?.classList.remove('hidden');
+        peelRewardModal?.classList.add('flex');
+      }, 250);
+    });
+  }
+
+  if (closePeelModal) {
+    closePeelModal.addEventListener('click', () => {
+      peelRewardModal?.classList.add('hidden');
+      peelRewardModal?.classList.remove('flex');
+      resetStick();
+    });
+  }
+</script>

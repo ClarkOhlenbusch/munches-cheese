@@ -1,0 +1,48 @@
+---
+// HeaderFrame.astro - Clean top brand bar that keeps the hero front and center
+---
+
+<header class="w-full pt-3 pb-2 px-4 sm:px-6 sticky top-0 z-50 pointer-events-none">
+  <div class="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto bg-[#FFF6E5]/90 backdrop-blur-md border-3 border-[#0E3A73] px-4 py-2.5 rounded-2xl shadow-[4px_4px_0px_#0E3A73]">
+    
+    <!-- Left: Brand Hook -->
+    <a href="#hero" class="flex items-center gap-2 group cursor-pointer">
+      <span class="text-xl">🧀</span>
+      <div class="leading-none">
+        <span class="font-bubble text-lg font-black text-[#FF521B] group-hover:text-[#E0400C] transition-colors">MUNCHES™</span>
+        <span class="block text-[9px] font-black tracking-widest text-[#0E3A73] uppercase mt-0.5">CHEESE STICKS</span>
+      </div>
+    </a>
+
+    <!-- Center Nav Links -->
+    <nav class="hidden md:flex items-center gap-6 text-xs font-black uppercase text-[#0E3A73]">
+      <a href="#hero" class="hover:text-[#FF521B] transition-colors">The Brand</a>
+      <a href="#origin" class="hover:text-[#FF521B] transition-colors">The Costco Origin</a>
+      <a href="#cheat-code" class="hover:text-[#FF521B] transition-colors">The Cheat Code</a>
+      <a href="#flavors" class="hover:text-[#FF521B] transition-colors">Flavors</a>
+      <a href="#pack-experience" class="hover:text-[#FF521B] transition-colors">The Flip-Pack</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-2">
+      <button 
+        id="sound-toggle-btn"
+        title="Toggle Snack SFX"
+        class="w-8 h-8 rounded-xl bg-[#FFE042] border-2 border-[#0E3A73] flex items-center justify-center text-xs shadow-[2px_2px_0px_#0E3A73] hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
+      >
+        <span id="sound-icon">🔊</span>
+      </button>
+
+      <button 
+        id="open-cart-btn"
+        class="btn-tactile flex items-center gap-2 bg-[#FF521B] text-[#FFF7E8] px-3.5 py-1.5 rounded-xl border-2 border-[#0E3A73] font-black text-xs uppercase shadow-[3px_3px_0px_#0E3A73]"
+      >
+        <span>STASH</span>
+        <span id="header-cart-count" class="bg-[#FFE042] text-[#0E3A73] px-1.5 py-0.2 rounded-full text-[10px] font-black">
+          0
+        </span>
+      </button>
+    </div>
+
+  </div>
+</header>
