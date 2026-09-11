@@ -4,9 +4,11 @@ import BoxFrontHeader from '../components/BoxFrontHeader.astro';
 import MarqueeBanner from '../components/MarqueeBanner.astro';
 import PocketPackSection from '../components/PocketPackSection.astro';
 import MacroSection from '../components/MacroSection.astro';
+import WaitlistSection from '../components/WaitlistSection.astro';
 import CampaignSection from '../components/CampaignSection.astro';
 import StoreLocatorSection from '../components/StoreLocatorSection.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import StickyWaitlistBar from '../components/StickyWaitlistBar.astro';
 import '../styles/global.css';
 ---
 
@@ -24,7 +26,10 @@ import '../styles/global.css';
     <!-- 4. Macro Cheat Code & Comparison Matrix (#macros) -->
     <MacroSection />
 
-    <!-- 5. Royal Blue Reverse Marquee Ticker -->
+    <!-- 5. VIP Batch 001 Waitlist & Demand Gauge (#waitlist) -->
+    <WaitlistSection />
+
+    <!-- 6. Royal Blue Reverse Marquee Ticker -->
     <MarqueeBanner 
       bgClass="bg-[#0B62C4]" 
       textClass="text-[#FFE042]" 
@@ -41,14 +46,17 @@ import '../styles/global.css';
       ]}
     />
 
-    <!-- 6. Official Brand Campaign Showcase (#the-snack) -->
+    <!-- 7. Official Brand Campaign Showcase (#the-snack) -->
     <CampaignSection />
 
-    <!-- 7. Where to Find Munches Store Locator (#find-stores) -->
+    <!-- 8. Where to Find Munches Store Locator (#find-stores) -->
     <StoreLocatorSection />
 
-    <!-- 8. Official Brand Site Footer -->
+    <!-- 9. Official Brand Site Footer -->
     <SiteFooter />
+
+    <!-- 10. Sticky Conversion Pill for Social/Ad Traffic -->
+    <StickyWaitlistBar />
   </main>
 </Layout>
 

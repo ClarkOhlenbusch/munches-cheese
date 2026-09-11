@@ -1,0 +1,453 @@
+---
+// src/components/WaitlistSection.astro
+// High-converting VIP Waitlist & Demand Gauge for Batch 001 Drops
+---
+
+<section id="waitlist" class="relative w-full bg-[#FFFDF5] py-16 sm:py-24 px-4 sm:px-8 overflow-hidden border-b-4 border-[#0B62C4]">
+  
+  <!-- Subtle background ambient blobs -->
+  <div class="absolute inset-0 pointer-events-none opacity-30 overflow-hidden">
+    <div class="absolute -left-20 top-1/3 w-96 h-96 bg-[#FFE042]/40 rounded-full blur-3xl"></div>
+    <div class="absolute -right-20 bottom-1/4 w-96 h-96 bg-[#FA4616]/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+    
+    <!-- Clean, bold section headline without weird pill shapes -->
+    <h2 class="reveal-on-scroll font-bubble text-3xl sm:text-5xl md:text-6xl font-black text-[#0B62C4] text-center leading-[1.05] tracking-tight max-w-3xl">
+      BE FIRST IN LINE FOR BATCH 001
+    </h2>
+
+    <p class="reveal-on-scroll font-bold text-sm sm:text-base md:text-lg text-[#0B62C4]/80 text-center max-w-2xl mt-4 leading-relaxed">
+      We are preparing the first production run of our rigid flip-top pocket cartons. Claim your early access reservation, vote on the next flavor drop, and tell us which local dairy cooler to stock first.
+    </p>
+
+    <!-- Scarcity & Reservation Progress Bar -->
+    <div class="reveal-on-scroll w-full bg-[#FFE042] border-4 border-[#0B62C4] rounded-3xl p-5 sm:p-6 mt-10 shadow-[6px_6px_0px_#0B62C4]">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2 mb-3">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-3 h-3 bg-[#FA4616] rounded-full animate-ping"></span>
+          <span class="font-bubble text-sm sm:text-base font-black text-[#0B62C4] uppercase tracking-wide">
+            BATCH 001 EARLY ACCESS ALLOCATION
+          </span>
+        </div>
+        <div class="font-bubble text-xs sm:text-sm font-black text-[#FA4616]">
+          <span id="spots-claimed-count">3,842</span> / 5,000 CARTONS RESERVED (76%)
+        </div>
+      </div>
+
+      <!-- Animated Bar Container -->
+      <div class="w-full bg-white border-3 border-[#0B62C4] rounded-full h-5 p-0.5 overflow-hidden shadow-inner">
+        <div class="bg-[#FA4616] h-full rounded-full transition-all duration-1000 ease-out" style="width: 76.8%;"></div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-3 text-xs font-bold text-[#0B62C4]/90">
+        <span>✦ Early taste test priority</span>
+        <span>✦ Secret launch discount</span>
+        <span>✦ Exclusive vinyl sticker pack</span>
+      </div>
+    </div>
+
+    <!-- Main Interactive Form Card & Success State Container -->
+    <div class="reveal-scale w-full mt-8">
+      
+      <!-- 1. The Waitlist Form -->
+      <form 
+        id="munches-waitlist-form" 
+        class="bg-white border-4 border-[#0B62C4] rounded-3xl sm:rounded-[36px] p-6 sm:p-10 shadow-[10px_10px_0px_#0B62C4] flex flex-col gap-6"
+      >
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b-2 border-[#0B62C4]/15 pb-4 gap-2">
+          <div>
+            <h3 class="font-bubble text-xl sm:text-2xl font-black text-[#0B62C4]">
+              RESERVE YOUR ALLOCATION
+            </h3>
+            <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/70 mt-0.5">
+              Lock in your spot before Batch 001 closes.
+            </p>
+          </div>
+          <span class="bg-[#FFE042] text-[#0B62C4] border-2 border-[#0B62C4] px-3 py-1 rounded-full text-xs font-black uppercase">
+            ⚡ 100% Free
+          </span>
+        </div>
+
+        <!-- Contact Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label for="wl-name" class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+              Your Name
+            </label>
+            <input 
+              id="wl-name" 
+              type="text" 
+              placeholder="e.g. Alex" 
+              class="w-full bg-[#FFFDF5] border-3 border-[#0B62C4] rounded-2xl px-4 py-3 font-bold text-sm text-[#0B62C4] placeholder-[#0B62C4]/40 outline-none focus:border-[#FA4616] transition-colors"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="wl-email" class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+              Email Address <span class="text-[#FA4616]">*</span>
+            </label>
+            <input 
+              id="wl-email" 
+              type="email" 
+              required
+              placeholder="alex@example.com" 
+              class="w-full bg-[#FFFDF5] border-3 border-[#0B62C4] rounded-2xl px-4 py-3 font-bold text-sm text-[#0B62C4] placeholder-[#0B62C4]/40 outline-none focus:border-[#FA4616] transition-colors"
+            />
+          </div>
+        </div>
+
+        <!-- Location / Demand Mapping -->
+        <div class="flex flex-col gap-1.5">
+          <label for="wl-zip" class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+            Your ZIP Code / City <span class="text-xs font-bold text-[#0B62C4]/60 lowercase">(tells us where to route trucks first)</span>
+          </label>
+          <input 
+            id="wl-zip" 
+            type="text" 
+            placeholder="e.g. 90210 or Austin, TX" 
+            class="w-full bg-[#FFFDF5] border-3 border-[#0B62C4] rounded-2xl px-4 py-3 font-bold text-sm text-[#0B62C4] placeholder-[#0B62C4]/40 outline-none focus:border-[#FA4616] transition-colors"
+          />
+        </div>
+
+        <!-- Demand Gauge: Grocery Store Preference -->
+        <div class="flex flex-col gap-2 pt-2 border-t-2 border-[#0B62C4]/10">
+          <span class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+            Where do you buy groceries most? <span class="text-xs font-bold text-[#0B62C4]/60">(we pitch dairy buyers here first)</span>
+          </span>
+          <div class="flex flex-wrap gap-2" id="retailer-chips">
+            {["Costco Wholesale", "Target", "Whole Foods", "Trader Joe's", "Sprouts", "Kroger / Ralphs", "Publix", "Local Independent"].map((store) => (
+              <button 
+                type="button" 
+                class="retailer-chip bg-[#FFFDF5] text-[#0B62C4] border-2 border-[#0B62C4] px-3.5 py-1.5 rounded-xl font-bubble text-xs font-black hover:border-[#FA4616] hover:bg-[#FFE042]/40 transition-all cursor-pointer select-none"
+                data-store={store}
+              >
+                {store}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Flavor R&D Vote -->
+        <div class="flex flex-col gap-2 pt-2 border-t-2 border-[#0B62C4]/10">
+          <span class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+            Vote on the Next Munches Flavor Drop:
+          </span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="flavor-chips">
+            {[
+              { id: "jalapeno", label: "Spicy Jalapeño 🌶️", desc: "Pepper jack kick" },
+              { id: "cheddar", label: "Sharp Cheddar 🧀", desc: "Wisconsin aged" },
+              { id: "gouda", label: "Smoked Gouda 🪵", desc: "Rich & savory" },
+              { id: "garlic", label: "Garlic & Herb 🧄", desc: "Italian garden" },
+            ].map((flavor) => (
+              <button 
+                type="button" 
+                class="flavor-chip bg-[#FFFDF5] text-[#0B62C4] border-2 border-[#0B62C4] p-3 rounded-2xl flex flex-col items-center text-center hover:border-[#FA4616] hover:bg-[#FFE042]/40 transition-all cursor-pointer select-none"
+                data-flavor={flavor.label}
+              >
+                <span class="font-bubble text-xs font-black leading-snug">{flavor.label}</span>
+                <span class="text-[10px] font-bold text-[#0B62C4]/60 mt-0.5">{flavor.desc}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Error Message Container -->
+        <div id="wl-error" class="hidden text-xs font-black text-[#FA4616] bg-[#FA4616]/10 border-2 border-[#FA4616] rounded-xl px-4 py-2"></div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            id="wl-submit-btn" 
+            class="btn-tactile w-full bg-[#FA4616] text-white font-bubble text-base sm:text-lg py-4 px-6 rounded-2xl border-3 border-[#0B62C4] shadow-[4px_4px_0px_#0B62C4] hover:bg-[#E03A09] active:translate-y-1 active:shadow-[1px_1px_0px_#0B62C4] transition-all flex items-center justify-center gap-3 cursor-pointer"
+          >
+            <span>CLAIM EARLY ACCESS ALLOCATION</span>
+            <span class="text-xl">➔</span>
+          </button>
+          <p class="text-[11px] font-bold text-[#0B62C4]/60 text-center mt-3">
+            🔒 No spam, ever. Only secret batch drops, store launch alerts, and taste tests. Unsubscribe anytime.
+          </p>
+        </div>
+
+      </form>
+
+      <!-- 2. The Success VIP Ticket State (Hidden by default) -->
+      <div 
+        id="munches-vip-pass" 
+        class="hidden bg-[#FFE042] border-4 border-[#0B62C4] rounded-3xl sm:rounded-[36px] p-6 sm:p-10 shadow-[12px_12px_0px_#0B62C4] relative overflow-hidden"
+      >
+        <!-- Perforated Ticket Style Notch Elements -->
+        <div class="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#FFFDF5] border-4 border-[#0B62C4] rounded-full"></div>
+        <div class="absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#FFFDF5] border-4 border-[#0B62C4] rounded-full"></div>
+
+        <div class="flex flex-col items-center text-center">
+          
+          <div class="inline-flex items-center gap-2 bg-white border-3 border-[#0B62C4] px-4 py-1 rounded-full text-xs font-black text-[#FA4616] shadow-xs mb-3">
+            <span>🎉</span>
+            <span>OFFICIALLY ALLOCATED</span>
+          </div>
+
+          <h3 class="font-bubble text-3xl sm:text-4xl font-black text-[#0B62C4] tracking-tight">
+            YOU'RE ON THE VIP LIST FOR BATCH 001!
+          </h3>
+
+          <p class="font-bold text-xs sm:text-sm text-[#0B62C4]/80 mt-2 max-w-md">
+            Your early access reservation has been confirmed. You will receive private early drop ordering access 48 hours before public launch.
+          </p>
+
+          <!-- Golden Ticket Badge -->
+          <div class="w-full max-w-md bg-white border-3 border-[#0B62C4] rounded-2xl p-5 my-6 shadow-[4px_4px_0px_#0B62C4] flex flex-col gap-3 text-left">
+            <div class="flex items-center justify-between border-b-2 border-[#0B62C4]/15 pb-2">
+              <span class="font-bubble text-xs font-black text-[#FA4616] tracking-wider uppercase">
+                MUNCHES™ GOLDEN PASS
+              </span>
+              <span id="vip-ticket-number" class="font-bubble text-sm font-black text-[#0B62C4]">
+                #MUNCH-03843
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs font-bold text-[#0B62C4]">
+              <div>
+                <span class="text-[#0B62C4]/60 uppercase text-[10px] block">Status</span>
+                <span class="text-[#00A86B] font-black">Priority Tier 1</span>
+              </div>
+              <div>
+                <span class="text-[#0B62C4]/60 uppercase text-[10px] block">Drop Window</span>
+                <span>Batch 001 (Spring)</span>
+              </div>
+              <div>
+                <span class="text-[#0B62C4]/60 uppercase text-[10px] block">Target Store</span>
+                <span id="vip-user-store">Costco Wholesale</span>
+              </div>
+              <div>
+                <span class="text-[#0B62C4]/60 uppercase text-[10px] block">Flavor Vote</span>
+                <span id="vip-user-flavor">Spicy Jalapeño 🌶️</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Share with friends to move up in line -->
+          <div class="w-full max-w-md flex flex-col sm:flex-row items-center gap-3">
+            <button 
+              id="vip-share-btn" 
+              type="button" 
+              class="btn-tactile w-full bg-[#FA4616] text-white font-bubble text-xs sm:text-sm py-3.5 px-6 rounded-2xl border-2 border-[#0B62C4] shadow-[3px_3px_0px_#0B62C4] hover:bg-[#E03A09] transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>🔗 COPY SHARE LINK TO JUMP 50 SPOTS</span>
+            </button>
+          </div>
+          <p id="share-toast" class="hidden text-xs font-black text-[#FA4616] mt-2">
+            ✅ Copied to clipboard! Share on social or text to friends.
+          </p>
+
+          <button 
+            id="vip-reset-btn" 
+            type="button" 
+            class="mt-4 text-xs font-bold text-[#0B62C4]/70 hover:text-[#0B62C4] underline cursor-pointer"
+          >
+            Update your reservation preferences
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Client Form Handler & Persistence Script -->
+<script is:inline>
+  (function() {
+    const STORAGE_KEY = 'munches_vip_reservation';
+    const ALL_ENTRIES_KEY = 'munches_all_waitlist_entries';
+
+    const form = document.getElementById('munches-waitlist-form');
+    const vipPass = document.getElementById('munches-vip-pass');
+    const emailInput = document.getElementById('wl-email');
+    const nameInput = document.getElementById('wl-name');
+    const zipInput = document.getElementById('wl-zip');
+    const errorEl = document.getElementById('wl-error');
+    const ticketEl = document.getElementById('vip-ticket-number');
+    const storeEl = document.getElementById('vip-user-store');
+    const flavorEl = document.getElementById('vip-user-flavor');
+    const shareBtn = document.getElementById('vip-share-btn');
+    const shareToast = document.getElementById('share-toast');
+    const resetBtn = document.getElementById('vip-reset-btn');
+    const spotsCountEl = document.getElementById('spots-claimed-count');
+
+    let selectedStore = 'Costco Wholesale';
+    let selectedFlavor = 'Spicy Jalapeño 🌶️';
+
+    // Toggle store chips
+    const storeChips = document.querySelectorAll('.retailer-chip');
+    storeChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        storeChips.forEach(c => {
+          c.classList.remove('bg-[#FA4616]', 'text-white', 'border-[#0B62C4]');
+          c.classList.add('bg-[#FFFDF5]', 'text-[#0B62C4]');
+        });
+        chip.classList.remove('bg-[#FFFDF5]', 'text-[#0B62C4]');
+        chip.classList.add('bg-[#FA4616]', 'text-white', 'border-[#0B62C4]');
+        selectedStore = chip.getAttribute('data-store') || 'Costco Wholesale';
+      });
+    });
+
+    // Default select first store chip
+    if (storeChips[0]) {
+      storeChips[0].classList.remove('bg-[#FFFDF5]', 'text-[#0B62C4]');
+      storeChips[0].classList.add('bg-[#FA4616]', 'text-white');
+    }
+
+    // Toggle flavor chips
+    const flavorChips = document.querySelectorAll('.flavor-chip');
+    flavorChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        flavorChips.forEach(c => {
+          c.classList.remove('bg-[#FFE042]', 'border-[#FA4616]');
+          c.classList.add('bg-[#FFFDF5]');
+        });
+        chip.classList.remove('bg-[#FFFDF5]');
+        chip.classList.add('bg-[#FFE042]', 'border-[#FA4616]');
+        selectedFlavor = chip.getAttribute('data-flavor') || 'Spicy Jalapeño 🌶️';
+      });
+    });
+
+    // Default select first flavor chip
+    if (flavorChips[0]) {
+      flavorChips[0].classList.remove('bg-[#FFFDF5]');
+      flavorChips[0].classList.add('bg-[#FFE042]', 'border-[#FA4616]');
+    }
+
+    // Check if user already reserved
+    function checkExisting() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const data = JSON.parse(saved);
+          showPass(data);
+        }
+      } catch (e) {}
+    }
+
+    function showPass(data) {
+      if (form) form.classList.add('hidden');
+      if (vipPass) vipPass.classList.remove('hidden');
+      if (ticketEl) ticketEl.textContent = data.ticketNumber || '#MUNCH-03843';
+      if (storeEl) storeEl.textContent = data.store || 'Costco Wholesale';
+      if (flavorEl) flavorEl.textContent = data.flavor || 'Spicy Jalapeño 🌶️';
+    }
+
+    checkExisting();
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = (emailInput?.value || '').trim();
+        const name = (nameInput?.value || '').trim();
+        const zip = (zipInput?.value || '').trim();
+
+        if (!email || !email.includes('@')) {
+          if (errorEl) {
+            errorEl.classList.remove('hidden');
+            errorEl.textContent = 'Please enter a valid email address.';
+          }
+          return;
+        }
+
+        if (errorEl) errorEl.classList.add('hidden');
+
+        // Generate unique ticket number
+        const currentCount = parseInt(localStorage.getItem('munches_waitlist_counter') || '3842', 10) + 1;
+        localStorage.setItem('munches_waitlist_counter', currentCount.toString());
+        if (spotsCountEl) spotsCountEl.textContent = currentCount.toLocaleString();
+
+        const ticketNum = '#MUNCH-' + currentCount.toString().padStart(5, '0');
+
+        const entry = {
+          email,
+          name: name || 'Friend',
+          zip: zip || 'USA',
+          store: selectedStore,
+          flavor: selectedFlavor,
+          ticketNumber: ticketNum,
+          timestamp: new Date().toISOString()
+        };
+
+        // Save active user pass
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(entry));
+          
+          // Append to all entries log for export
+          let all = [];
+          try {
+            all = JSON.parse(localStorage.getItem(ALL_ENTRIES_KEY) || '[]');
+          } catch (err) {}
+          all.push(entry);
+          localStorage.setItem(ALL_ENTRIES_KEY, JSON.stringify(all));
+        } catch (e) {}
+
+        // Confetti burst
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 80,
+            spread: 90,
+            origin: { y: 0.6 },
+            colors: ['#FA4616', '#FFE042', '#FFFDF5', '#0B62C4']
+          });
+        }
+
+        showPass(entry);
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (vipPass) vipPass.classList.add('hidden');
+        if (form) form.classList.remove('hidden');
+      });
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        const shareUrl = window.location.origin + '#waitlist';
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            if (shareToast) {
+              shareToast.classList.remove('hidden');
+              setTimeout(() => shareToast.classList.add('hidden'), 3500);
+            }
+          });
+        }
+      });
+    }
+
+    // Global helper for Clark to export waitlist as CSV anytime in console
+    window.exportMunchesWaitlist = function() {
+      try {
+        const raw = localStorage.getItem(ALL_ENTRIES_KEY) || '[]';
+        const list = JSON.parse(raw);
+        if (list.length === 0) {
+          console.log('No waitlist signups recorded on this browser yet.');
+          alert('No waitlist signups recorded on this browser yet.');
+          return;
+        }
+        let csv = 'Ticket,Name,Email,Zip,Store,Flavor,Date\n';
+        list.forEach(item => {
+          csv += `"${item.ticketNumber}","${item.name}","${item.email}","${item.zip}","${item.store}","${item.flavor}","${item.timestamp}"\n`;
+        });
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `munches-waitlist-${new Date().toISOString().slice(0,10)}.csv`;
+        a.click();
+        console.log(`Exported ${list.length} waitlist entries!`);
+      } catch (err) {
+        console.error('Export error:', err);
+      }
+    };
+  })();
+</script>

@@ -1,0 +1,84 @@
+---
+// src/components/StickyWaitlistBar.astro
+// Floating conversion pill that appears on scroll for paid ad & social traffic
+---
+
+<div 
+  id="sticky-waitlist-pill" 
+  class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 transform translate-y-28 opacity-0 pointer-events-none select-none max-w-[92vw] sm:max-w-md w-full"
+>
+  <div class="bg-[#0B62C4] text-white border-3 border-[#FFE042] rounded-full px-3 sm:px-4 py-2 sm:py-2.5 shadow-[0_12px_28px_rgba(11,98,196,0.38)] flex items-center justify-between gap-2 sm:gap-4">
+    
+    <div class="flex items-center gap-2 pl-1 min-w-0">
+      <span class="text-base sm:text-lg leading-none shrink-0">🧀</span>
+      <div class="flex flex-col min-w-0">
+        <span class="font-bubble text-xs sm:text-sm font-black text-[#FFE042] truncate leading-tight">
+          BATCH 001 EARLY ACCESS
+        </span>
+        <span class="text-[10px] font-bold text-white/80 truncate leading-tight hidden xs:inline">
+          76% Claimed • VIP Launch Priority
+        </span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-1.5 shrink-0">
+      <a 
+        href="#waitlist" 
+        class="btn-tactile bg-[#FA4616] text-white font-bubble text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border-2 border-white/40 shadow-xs hover:bg-[#E03A09] active:scale-95 transition-all whitespace-nowrap"
+      >
+        CLAIM SPOT ➔
+      </a>
+      <button 
+        id="close-sticky-pill" 
+        type="button"
+        aria-label="Dismiss banner"
+        class="text-white/60 hover:text-white p-1 text-sm font-black transition-colors cursor-pointer"
+      >
+        ✕
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    const pill = document.getElementById('sticky-waitlist-pill');
+    const closeBtn = document.getElementById('close-sticky-pill');
+    let dismissed = false;
+
+    if (!pill) return;
+
+    function onScroll() {
+      if (dismissed) return;
+      const scrollY = window.scrollY || window.pageYOffset;
+      const waitlistSection = document.getElementById('waitlist');
+      let insideWaitlist = false;
+
+      if (waitlistSection) {
+        const rect = waitlistSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          insideWaitlist = true;
+        }
+      }
+
+      if (scrollY > 320 && !insideWaitlist) {
+        pill.classList.remove('translate-y-28', 'opacity-0', 'pointer-events-none');
+        pill.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      } else {
+        pill.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+        pill.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dismissed = true;
+        pill.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+      });
+    }
+  })();
+</script>
