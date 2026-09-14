@@ -1,0 +1,493 @@
+---
+// src/pages/admin.astro
+// Munches Official VIP Waitlist & Retail Demand Command Center
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="MUNCHES™ Command Center | Batch 001 Leads & Demand Analytics">
+  <main class="min-h-screen bg-[#FFFDF5] text-[#0B62C4] font-sans pb-20">
+    
+    <!-- Header Bar -->
+    <header class="w-full bg-[#0B62C4] text-white py-4 px-6 sm:px-10 flex flex-wrap items-center justify-between border-b-4 border-[#FA4616] shadow-md gap-4">
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2 bg-[#FFFDF5] border-2 border-[#FFE042] px-3 py-1 rounded-full text-xs font-black text-[#FA4616] tracking-wider hover:scale-105 transition-transform">
+          <span>🧀</span>
+          <span class="font-bubble">MUNCHES™</span>
+        </a>
+        <span class="text-white/40">|</span>
+        <h1 class="font-bubble text-sm sm:text-base font-black tracking-wide text-[#FFE042]">
+          BATCH 001 COMMAND CENTER
+        </h1>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-bold">
+        <span id="header-status" class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full text-white/80">
+          <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+          Locked
+        </span>
+        <a href="/" class="hover:text-[#FFE042] transition-colors underline">
+          View Live Website ➔
+        </a>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-8">
+
+      <!-- 1. Password Protection Modal / Card (Shown until authenticated) -->
+      <div id="auth-lock-card" class="max-w-md mx-auto my-16 bg-white border-4 border-[#0B62C4] rounded-3xl p-8 shadow-[10px_10px_0px_#0B62C4] text-center">
+        <div class="text-4xl mb-3">🔒</div>
+        <h2 class="font-bubble text-2xl font-black text-[#0B62C4]">
+          FOUNDER ACCESS ONLY
+        </h2>
+        <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/70 mt-1 mb-6">
+          Enter your admin passcode to view real-time ad conversions, customer leads, and retail demand data.
+        </p>
+
+        <form id="admin-login-form" class="flex flex-col gap-3">
+          <input 
+            type="password" 
+            id="admin-pass-input"
+            placeholder="Admin Passcode (e.g. munches2026)" 
+            class="w-full bg-[#FFFDF5] border-3 border-[#0B62C4] rounded-2xl px-4 py-3 font-bold text-sm text-[#0B62C4] outline-none focus:border-[#FA4616]"
+            required
+            autofocus
+          />
+          <div id="auth-error-msg" class="hidden text-xs font-black text-[#FA4616] bg-[#FA4616]/10 p-2 rounded-xl border border-[#FA4616]">
+            Incorrect passcode. Please check your credentials.
+          </div>
+          <button 
+            type="submit"
+            class="btn-tactile w-full bg-[#FA4616] text-white font-bubble text-sm py-3.5 rounded-2xl border-2 border-[#0B62C4] shadow-[3px_3px_0px_#0B62C4] hover:bg-[#E03A09] active:translate-y-0.5 cursor-pointer mt-2"
+          >
+            UNLOCK DASHBOARD ➔
+          </button>
+        </form>
+      </div>
+
+      <!-- 2. The Main Admin Dashboard (Hidden until unlocked) -->
+      <div id="dashboard-content" class="hidden flex flex-col gap-8">
+        
+        <!-- Top Controls & Action Bar -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[6px_6px_0px_#0B62C4]">
+          <div>
+            <h2 class="font-bubble text-2xl sm:text-3xl font-black text-[#0B62C4]">
+              LIVE CAMPAIGN DEMAND
+            </h2>
+            <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/70 mt-0.5" id="last-updated-text">
+              Last synced: Just now
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button 
+              id="refresh-btn"
+              type="button" 
+              class="btn-tactile bg-[#FFFDF5] text-[#0B62C4] font-bubble text-xs px-4 py-2.5 rounded-2xl border-2 border-[#0B62C4] shadow-[2px_2px_0px_#0B62C4] hover:bg-[#FFE042]/50 cursor-pointer flex items-center gap-1.5"
+            >
+              <span>🔄</span> Refresh
+            </button>
+            <button 
+              id="export-csv-btn"
+              type="button" 
+              class="btn-tactile bg-[#0B62C4] text-white font-bubble text-xs px-4 py-2.5 rounded-2xl border-2 border-[#0B62C4] shadow-[2px_2px_0px_#FA4616] hover:bg-[#094e9c] cursor-pointer flex items-center gap-1.5"
+            >
+              <span>⬇️</span> Export Leads CSV
+            </button>
+            <button 
+              id="reset-data-btn"
+              type="button" 
+              class="btn-tactile bg-[#FFFDF5] text-[#FA4616] font-bubble text-xs px-3 py-2.5 rounded-2xl border-2 border-[#FA4616] hover:bg-[#FA4616]/10 cursor-pointer"
+              title="Reset test data"
+            >
+              Reset Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Scorecards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-5 shadow-[4px_4px_0px_#0B62C4] flex flex-col justify-between">
+            <span class="text-xs font-black uppercase tracking-wider text-[#0B62C4]/70">Verified Waitlist</span>
+            <div class="my-2">
+              <span id="kpi-waitlist-count" class="font-bubble text-4xl sm:text-5xl font-black text-[#FA4616]">
+                0
+              </span>
+              <span class="text-xs font-bold text-[#0B62C4]/60 ml-1">/ 2,500 target</span>
+            </div>
+            <span class="text-[11px] font-bold text-[#00A86B]">✦ Ready for email launch</span>
+          </div>
+
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-5 shadow-[4px_4px_0px_#0B62C4] flex flex-col justify-between">
+            <span class="text-xs font-black uppercase tracking-wider text-[#0B62C4]/70">Store Demand Petitions</span>
+            <div class="my-2">
+              <span id="kpi-demand-count" class="font-bubble text-4xl sm:text-5xl font-black text-[#0B62C4]">
+                0
+              </span>
+              <span class="text-xs font-bold text-[#0B62C4]/60 ml-1">retail votes</span>
+            </div>
+            <span class="text-[11px] font-bold text-[#0B62C4]/70">✦ For retail buyer pitch deck</span>
+          </div>
+
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-5 shadow-[4px_4px_0px_#0B62C4] flex flex-col justify-between">
+            <span class="text-xs font-black uppercase tracking-wider text-[#0B62C4]/70">#1 Top Requested Grocer</span>
+            <div class="my-2">
+              <span id="kpi-top-store" class="font-bubble text-xl sm:text-2xl font-black text-[#0B62C4] line-clamp-1">
+                Costco Wholesale
+              </span>
+              <span id="kpi-top-store-sub" class="text-xs font-bold text-[#FA4616]">
+                Leading demand
+              </span>
+            </div>
+            <span class="text-[11px] font-bold text-[#0B62C4]/70">✦ High grocery density</span>
+          </div>
+
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-5 shadow-[4px_4px_0px_#0B62C4] flex flex-col justify-between">
+            <span class="text-xs font-black uppercase tracking-wider text-[#0B62C4]/70">#1 Voted Next Flavor</span>
+            <div class="my-2">
+              <span id="kpi-top-flavor" class="font-bubble text-xl sm:text-2xl font-black text-[#FA4616] line-clamp-1">
+                Spicy Jalapeño 🌶️
+              </span>
+              <span id="kpi-top-flavor-sub" class="text-xs font-bold text-[#0B62C4]/80">
+                Next R&D drop
+              </span>
+            </div>
+            <span class="text-[11px] font-bold text-[#0B62C4]/70">✦ First limited batch</span>
+          </div>
+
+        </div>
+
+        <!-- Breakdown Analytics: Stores & Flavors & Geographic Demand -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Store Demand Breakdown -->
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4]">
+            <h3 class="font-bubble text-lg font-black text-[#0B62C4] mb-1">
+              GROCERY STORE DEMAND
+            </h3>
+            <p class="text-xs font-bold text-[#0B62C4]/60 mb-4">
+              Where customers shop most frequently:
+            </p>
+            <div id="stores-breakdown-list" class="flex flex-col gap-3">
+              <div class="text-xs font-bold text-[#0B62C4]/50">No store data yet</div>
+            </div>
+          </div>
+
+          <!-- Flavor Vote Leaderboard -->
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4]">
+            <h3 class="font-bubble text-lg font-black text-[#FA4616] mb-1">
+              FLAVOR VOTE LEADERBOARD
+            </h3>
+            <p class="text-xs font-bold text-[#0B62C4]/60 mb-4">
+              Customer votes for upcoming Munches flavors:
+            </p>
+            <div id="flavors-breakdown-list" class="flex flex-col gap-3">
+              <div class="text-xs font-bold text-[#0B62C4]/50">No flavor votes yet</div>
+            </div>
+          </div>
+
+          <!-- Geographic Hotspots -->
+          <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-6 shadow-[5px_5px_0px_#0B62C4]">
+            <h3 class="font-bubble text-lg font-black text-[#0B62C4] mb-1">
+              TOP CITIES & ZIP CODES
+            </h3>
+            <p class="text-xs font-bold text-[#0B62C4]/60 mb-4">
+              Highest-density geographic clusters for retail routing:
+            </p>
+            <div id="zips-breakdown-list" class="flex flex-col gap-2.5">
+              <div class="text-xs font-bold text-[#0B62C4]/50">No location data yet</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Customer Leads Table Card -->
+        <div class="bg-white border-3 border-[#0B62C4] rounded-3xl p-6 sm:p-8 shadow-[8px_8px_0px_#0B62C4]">
+          
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 class="font-bubble text-xl sm:text-2xl font-black text-[#0B62C4]">
+                CUSTOMER LEADS & ENTRIES
+              </h3>
+              <p class="text-xs sm:text-sm font-bold text-[#0B62C4]/70 mt-0.5">
+                Full list of reservations and community demand submissions.
+              </p>
+            </div>
+
+            <!-- Search Filter Input -->
+            <div class="w-full sm:w-72">
+              <input 
+                type="text" 
+                id="table-search-input"
+                placeholder="Search email, name, city, store..." 
+                class="w-full bg-[#FFFDF5] border-2 border-[#0B62C4] rounded-2xl px-4 py-2 text-xs font-bold text-[#0B62C4] outline-none focus:border-[#FA4616]"
+              />
+            </div>
+          </div>
+
+          <!-- Table Container -->
+          <div class="w-full overflow-x-auto rounded-2xl border-2 border-[#0B62C4]/20">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="bg-[#0B62C4] text-[#FFE042] font-bubble uppercase text-[11px] tracking-wider">
+                <tr>
+                  <th class="py-3 px-4">Ticket</th>
+                  <th class="py-3 px-4">Name</th>
+                  <th class="py-3 px-4">Email</th>
+                  <th class="py-3 px-4">ZIP / City</th>
+                  <th class="py-3 px-4">Requested Store</th>
+                  <th class="py-3 px-4">Flavor Vote</th>
+                  <th class="py-3 px-4">Date & Time</th>
+                </tr>
+              </thead>
+              <tbody id="leads-table-body" class="divide-y divide-[#0B62C4]/10 font-medium text-[#0B62C4]">
+                <tr>
+                  <td colspan="7" class="py-6 text-center text-xs font-bold text-[#0B62C4]/50">
+                    Loading entries...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  (function() {
+    let adminToken = sessionStorage.getItem('munches_admin_auth') || '';
+    const authCard = document.getElementById('auth-lock-card');
+    const dashContent = document.getElementById('dashboard-content');
+    const loginForm = document.getElementById('admin-login-form');
+    const passInput = document.getElementById('admin-pass-input');
+    const errorMsg = document.getElementById('auth-error-msg');
+    const headerStatus = document.getElementById('header-status');
+    const refreshBtn = document.getElementById('refresh-btn');
+    const exportBtn = document.getElementById('export-csv-btn');
+    const resetBtn = document.getElementById('reset-data-btn');
+    const searchInput = document.getElementById('table-search-input');
+
+    let cachedSignups = [];
+    let cachedDemand = [];
+
+    // Authenticate & Load
+    async function loadDashboard(password) {
+      try {
+        const res = await fetch(`/api/admin?password=${encodeURIComponent(password)}`);
+        if (!res.ok) {
+          throw new Error('Unauthorized');
+        }
+        const data = await res.json();
+        adminToken = password;
+        sessionStorage.setItem('munches_admin_auth', password);
+
+        // Switch views
+        if (authCard) authCard.classList.add('hidden');
+        if (dashContent) dashContent.classList.remove('hidden');
+        if (headerStatus) {
+          headerStatus.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400"></span> Live Connected';
+        }
+
+        renderDashboard(data);
+      } catch (err) {
+        if (errorMsg) errorMsg.classList.remove('hidden');
+      }
+    }
+
+    if (adminToken) {
+      loadDashboard(adminToken);
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pw = (passInput?.value || '').trim();
+        if (pw) loadDashboard(pw);
+      });
+    }
+
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', () => {
+        if (adminToken) loadDashboard(adminToken);
+      });
+    }
+
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        if (!adminToken) return;
+        window.location.href = `/api/admin?password=${encodeURIComponent(adminToken)}&format=csv`;
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', async () => {
+        if (!adminToken) return;
+        const conf = confirm('Are you sure you want to reset all test data? This will clear test signups and reset the counter back to 0.');
+        if (!conf) return;
+        try {
+          const res = await fetch(`/api/admin?password=${encodeURIComponent(adminToken)}&action=reset_test_data`, { method: 'POST' });
+          if (res.ok) {
+            alert('All test data has been successfully reset.');
+            loadDashboard(adminToken);
+          }
+        } catch (e) {
+          alert('Failed to reset: ' + e.message);
+        }
+      });
+    }
+
+    // Render stats & UI
+    function renderDashboard(data) {
+      const waitlistEl = document.getElementById('kpi-waitlist-count');
+      const demandEl = document.getElementById('kpi-demand-count');
+      const topStoreEl = document.getElementById('kpi-top-store');
+      const topFlavorEl = document.getElementById('kpi-top-flavor');
+      const updatedEl = document.getElementById('last-updated-text');
+
+      cachedSignups = data.signups || [];
+      cachedDemand = data.demandVotes || [];
+
+      if (waitlistEl) waitlistEl.textContent = (data.totalCount || cachedSignups.length).toLocaleString();
+      if (demandEl) demandEl.textContent = (data.demandCount || cachedDemand.length).toLocaleString();
+      if (updatedEl && data.lastUpdated) {
+        updatedEl.textContent = `Last synced: ${new Date(data.lastUpdated).toLocaleTimeString()}`;
+      }
+
+      // Calculate top store
+      const storeStats = data.storeStats || {};
+      const sortedStores = Object.entries(storeStats).sort((a, b) => b[1] - a[1]);
+      if (topStoreEl) {
+        topStoreEl.textContent = sortedStores[0] ? sortedStores[0][0] : 'Costco Wholesale';
+      }
+
+      // Calculate top flavor
+      const flavorStats = data.flavorStats || {};
+      const sortedFlavors = Object.entries(flavorStats).sort((a, b) => b[1] - a[1]);
+      if (topFlavorEl) {
+        topFlavorEl.textContent = sortedFlavors[0] ? sortedFlavors[0][0] : 'Spicy Jalapeño 🌶️';
+      }
+
+      // Render Store Breakdown list
+      const storeListEl = document.getElementById('stores-breakdown-list');
+      if (storeListEl) {
+        if (sortedStores.length === 0) {
+          storeListEl.innerHTML = '<div class="text-xs font-bold text-[#0B62C4]/50">No store votes yet</div>';
+        } else {
+          const totalStoreVotes = sortedStores.reduce((acc, curr) => acc + curr[1], 0) || 1;
+          storeListEl.innerHTML = sortedStores.map(([store, count]) => {
+            const pct = Math.round((count / totalStoreVotes) * 100);
+            return `
+              <div>
+                <div class="flex justify-between text-xs font-black mb-1">
+                  <span>${store}</span>
+                  <span class="text-[#FA4616]">${count} (${pct}%)</span>
+                </div>
+                <div class="w-full bg-[#FFFDF5] border border-[#0B62C4]/30 rounded-full h-2.5 overflow-hidden">
+                  <div class="bg-[#0B62C4] h-full rounded-full" style="width: ${pct}%"></div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      // Render Flavor Breakdown list
+      const flavorListEl = document.getElementById('flavors-breakdown-list');
+      if (flavorListEl) {
+        if (sortedFlavors.length === 0) {
+          flavorListEl.innerHTML = '<div class="text-xs font-bold text-[#0B62C4]/50">No flavor votes yet</div>';
+        } else {
+          const totalFlavorVotes = sortedFlavors.reduce((acc, curr) => acc + curr[1], 0) || 1;
+          flavorListEl.innerHTML = sortedFlavors.map(([flavor, count]) => {
+            const pct = Math.round((count / totalFlavorVotes) * 100);
+            return `
+              <div>
+                <div class="flex justify-between text-xs font-black mb-1">
+                  <span>${flavor}</span>
+                  <span class="text-[#0B62C4]">${count} (${pct}%)</span>
+                </div>
+                <div class="w-full bg-[#FFFDF5] border border-[#0B62C4]/30 rounded-full h-2.5 overflow-hidden">
+                  <div class="bg-[#FA4616] h-full rounded-full" style="width: ${pct}%"></div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      // Render Zip Breakdown list
+      const zipListEl = document.getElementById('zips-breakdown-list');
+      if (zipListEl) {
+        const zips = data.zipLeaderboard || [];
+        if (zips.length === 0) {
+          zipListEl.innerHTML = '<div class="text-xs font-bold text-[#0B62C4]/50">No location data yet</div>';
+        } else {
+          zipListEl.innerHTML = zips.slice(0, 5).map((item, idx) => `
+            <div class="flex items-center justify-between text-xs font-bold border-b border-[#0B62C4]/10 pb-1.5">
+              <span>#${idx + 1}. 📍 ${item.zip}</span>
+              <span class="font-black text-[#FA4616]">${item.count} votes</span>
+            </div>
+          `).join('');
+        }
+      }
+
+      renderTable(cachedSignups);
+    }
+
+    function renderTable(entries) {
+      const tbody = document.getElementById('leads-table-body');
+      if (!tbody) return;
+
+      if (!entries || entries.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-xs font-bold text-[#0B62C4]/60">
+              No signups yet. Share the waitlist link to start capturing leads!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = entries.map((entry) => {
+        const dateStr = entry.timestamp ? new Date(entry.timestamp).toLocaleDateString() + ' ' + new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '-';
+        return `
+          <tr class="hover:bg-[#FFE042]/20 transition-colors">
+            <td class="py-3 px-4 font-black font-bubble text-[#FA4616] whitespace-nowrap">${entry.ticketNumber || '#MUNCH-PENDING'}</td>
+            <td class="py-3 px-4 font-bold whitespace-nowrap">${entry.name || 'Friend'}</td>
+            <td class="py-3 px-4 font-mono text-[#0B62C4] select-all">${entry.email || '-'}</td>
+            <td class="py-3 px-4 font-bold">${entry.zip || '-'}</td>
+            <td class="py-3 px-4 whitespace-nowrap">${entry.store || '-'}</td>
+            <td class="py-3 px-4 whitespace-nowrap">${entry.flavor || '-'}</td>
+            <td class="py-3 px-4 text-[#0B62C4]/70 whitespace-nowrap">${dateStr}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Filter table search
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        if (!q) {
+          renderTable(cachedSignups);
+          return;
+        }
+        const filtered = cachedSignups.filter(s => 
+          (s.name || '').toLowerCase().includes(q) ||
+          (s.email || '').toLowerCase().includes(q) ||
+          (s.zip || '').toLowerCase().includes(q) ||
+          (s.store || '').toLowerCase().includes(q) ||
+          (s.flavor || '').toLowerCase().includes(q) ||
+          (s.ticketNumber || '').toLowerCase().includes(q)
+        );
+        renderTable(filtered);
+      });
+    }
+  })();
+</script>

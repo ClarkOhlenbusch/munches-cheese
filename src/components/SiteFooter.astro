@@ -30,7 +30,7 @@
         <a href="#the-pack" class="hover:text-[#FFE042] transition-colors">✦ The Pocket Carton</a>
         <a href="#macros" class="hover:text-[#FFE042] transition-colors">✦ Macro Cheat Code</a>
         <a href="#the-snack" class="hover:text-[#FFE042] transition-colors">✦ The Snack</a>
-        <a href="#find-stores" class="hover:text-[#FFE042] transition-colors">✦ Store Locator</a>
+        <a href="#find-stores" class="hover:text-[#FFE042] transition-colors">✦ Store Demand</a>
       </div>
 
       <!-- Newsletter Sign Up -->
@@ -39,16 +39,21 @@
         <p class="text-xs text-white/80 font-bold mb-3 leading-relaxed">
           Sign up for fresh snack drops, secret flavor voting, and store restock alerts.
         </p>
-        <div class="flex items-center gap-2">
+        <form id="footer-newsletter-form" class="flex items-center gap-2">
           <input 
+            id="footer-email-input"
             type="email" 
+            required
             placeholder="Your email address" 
             class="flex-1 bg-white/10 border-2 border-white/30 rounded-xl px-3 py-2 text-xs font-bold text-white placeholder-white/50 outline-none focus:border-[#FFE042]"
           />
-          <button class="btn-tactile bg-[#FFE042] text-[#0B62C4] font-bubble text-xs px-4 py-2 rounded-xl font-black border-2 border-[#0B62C4] hover:scale-105 active:scale-95 cursor-pointer">
+          <button type="submit" class="btn-tactile bg-[#FFE042] text-[#0B62C4] font-bubble text-xs px-4 py-2 rounded-xl font-black border-2 border-[#0B62C4] hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap">
             JOIN
           </button>
-        </div>
+        </form>
+        <p id="footer-toast" class="hidden text-[11px] font-black text-[#FFE042] mt-2">
+          🎉 You're on the list for Batch 001!
+        </p>
       </div>
 
     </div>
@@ -66,3 +71,42 @@
 
   </div>
 </footer>
+
+<script is:inline>
+  (function() {
+    const footerForm = document.getElementById('footer-newsletter-form');
+    const footerInput = document.getElementById('footer-email-input');
+    const footerToast = document.getElementById('footer-toast');
+
+    if (footerForm) {
+      footerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = (footerInput?.value || '').trim();
+        if (!email || !email.includes('@')) return;
+
+        try {
+          await fetch('/api/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'waitlist',
+              email,
+              name: 'Newsletter Subscriber',
+              zip: 'USA',
+              store: 'Costco Wholesale',
+              flavor: 'Spicy Jalapeño 🌶️'
+            })
+          });
+
+          if (footerToast) {
+            footerToast.classList.remove('hidden');
+            setTimeout(() => footerToast.classList.add('hidden'), 5000);
+          }
+          footerForm.reset();
+        } catch (err) {
+          console.error('Footer submission error:', err);
+        }
+      });
+    }
+  })();
+</script>

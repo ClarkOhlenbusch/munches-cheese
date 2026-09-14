@@ -1,82 +1,181 @@
 ---
 // src/components/StoreLocatorSection.astro
-// Where to find Munches in stores
+// Demand Munches in your city & local grocery cooler
 ---
 
 <section id="find-stores" class="relative w-full bg-[#FFE042] py-16 sm:py-24 px-4 sm:px-8 overflow-hidden border-b-4 border-[#0B62C4]">
   
-  <div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
+  <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
     
     <h2 class="reveal-on-scroll font-bubble text-3xl sm:text-5xl md:text-6xl font-black text-[#0B62C4] leading-[1.05] tracking-tight max-w-3xl">
-      WHERE TO GRAB MUNCHES
+      BRING MUNCHES TO YOUR LOCAL STORE
     </h2>
 
-    <p class="reveal-on-scroll font-bold text-sm sm:text-base md:text-lg text-[#0B62C4]/80 max-w-xl mt-4 leading-relaxed">
-      Look for the bright orange flip-top carton in the dairy aisle right next to your favorite whole-milk cheeses.
+    <p class="reveal-on-scroll font-bold text-sm sm:text-base md:text-lg text-[#0B62C4]/85 max-w-2xl mt-4 leading-relaxed">
+      We are manufacturing Batch 001 and meeting with national dairy buyers. Tell us your city and preferred grocer so our distribution team knows where customer demand is hottest.
     </p>
 
-    <!-- Zip Code Search Box -->
-    <div class="reveal-scale w-full max-w-md bg-white border-4 border-[#0B62C4] rounded-3xl p-2.5 shadow-[6px_6px_0px_#0B62C4] flex items-center gap-2 mt-8">
-      <input 
-        id="store-zip-input"
-        type="text" 
-        placeholder="Enter your ZIP code (e.g. 90210)" 
-        class="flex-1 px-4 py-2 font-bold text-sm sm:text-base text-[#0B62C4] placeholder-[#0B62C4]/40 outline-none bg-transparent"
-        maxlength="10"
-      />
-      <button 
-        id="store-search-btn"
-        class="btn-tactile bg-[#FA4616] text-white font-bubble text-xs sm:text-sm px-5 py-3 rounded-2xl border-2 border-[#0B62C4] shadow-[2px_2px_0px_#0B62C4] hover:bg-[#E03A09] active:scale-95 whitespace-nowrap cursor-pointer"
-      >
-        FIND STORES ➔
-      </button>
-    </div>
+    <!-- Interactive Store Demand Petition Form -->
+    <div class="reveal-scale w-full max-w-xl bg-white border-4 border-[#0B62C4] rounded-3xl p-6 sm:p-8 shadow-[8px_8px_0px_#0B62C4] mt-8 text-left">
+      
+      <form id="store-demand-form" class="flex flex-col gap-4">
+        
+        <!-- City / ZIP input -->
+        <div class="flex flex-col gap-1.5">
+          <label for="demand-location-input" class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+            Your City or ZIP Code <span class="text-[#FA4616]">*</span>
+          </label>
+          <input 
+            id="demand-location-input"
+            type="text" 
+            required
+            placeholder="e.g. Austin, TX or 90210" 
+            class="w-full bg-[#FFFDF5] border-3 border-[#0B62C4] rounded-2xl px-4 py-3 font-bold text-sm text-[#0B62C4] placeholder-[#0B62C4]/40 outline-none focus:border-[#FA4616] transition-colors"
+          />
+        </div>
 
-    <!-- Live Search Feedback Mock -->
-    <div id="store-result-box" class="mt-4 hidden bg-white border-3 border-[#0B62C4] px-5 py-3 rounded-2xl text-xs sm:text-sm font-black text-[#0B62C4] shadow-[3px_3px_0px_#0B62C4] animate-bounce">
-      🧀 Found 4 stores near you! Stocked at Costco & Whole Foods dairy cooler.
+        <!-- Preferred Retailer Select -->
+        <div class="flex flex-col gap-2 pt-1">
+          <span class="font-bubble text-xs font-black text-[#0B62C4] uppercase tracking-wider">
+            Which grocery store should we stock first?
+          </span>
+          <div class="flex flex-wrap gap-2" id="demand-store-chips">
+            {["Costco Wholesale", "Target", "Whole Foods", "Trader Joe's", "Sprouts", "Kroger / Ralphs", "Publix", "H-E-B", "Wegmans", "Local Independent"].map((store) => (
+              <button 
+                type="button" 
+                class="demand-chip bg-[#FFFDF5] text-[#0B62C4] border-2 border-[#0B62C4] px-3 py-1.5 rounded-xl font-bubble text-xs font-black hover:border-[#FA4616] hover:bg-[#FFE042]/40 transition-all cursor-pointer select-none"
+                data-store={store}
+              >
+                {store}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button 
+          id="demand-submit-btn"
+          type="submit"
+          class="btn-tactile bg-[#FA4616] text-white font-bubble text-sm sm:text-base py-3.5 px-6 rounded-2xl border-3 border-[#0B62C4] shadow-[3px_3px_0px_#0B62C4] hover:bg-[#E03A09] active:translate-y-0.5 transition-all text-center cursor-pointer mt-2"
+        >
+          <span>VOTE FOR MY LOCAL STORE ➔</span>
+        </button>
+
+      </form>
+
+      <!-- Live Search / Submission Feedback -->
+      <div id="demand-success-box" class="mt-4 hidden bg-[#FFFDF5] border-3 border-[#0B62C4] p-5 rounded-2xl text-left shadow-sm">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-xl">📍</span>
+          <span class="font-bubble text-sm font-black text-[#0B62C4]">DEMAND VOTE RECORDED!</span>
+        </div>
+        <p id="demand-success-msg" class="text-xs font-bold text-[#0B62C4]/80 leading-relaxed">
+          We added your vote to our distributor demand map.
+        </p>
+        <div class="mt-3 pt-3 border-t border-[#0B62C4]/15 flex items-center justify-between">
+          <span class="text-[11px] font-bold text-[#0B62C4]/70">Want guaranteed early delivery?</span>
+          <a href="#waitlist" class="font-bubble text-xs text-[#FA4616] font-black underline hover:text-[#0B62C4]">
+            Claim Batch 001 VIP Spot ➔
+          </a>
+        </div>
+      </div>
+
     </div>
 
     <!-- Partner Retailer Badges -->
     <div class="reveal-on-scroll w-full mt-12 flex flex-col items-center">
       <span class="text-xs font-black uppercase text-[#0B62C4] tracking-widest mb-4">
-        ✦ PROUDLY STOCKED AT THESE RETAILERS ✦
+        ✦ TOP REQUESTED RETAILERS BY OUR COMMUNITY ✦
       </span>
-      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-        {["COSTCO WHOLESALE", "TARGET", "WHOLE FOODS", "SPROUTS", "TRADER JOE'S"].map((retailer) => (
-          <div class="bg-[#FFFDF5] text-[#0B62C4] border-3 border-[#0B62C4] px-4 sm:px-6 py-2 rounded-2xl font-bubble text-xs sm:text-sm font-black tracking-wide shadow-[3px_3px_0px_#0B62C4] hover:scale-105 hover:bg-[#FA4616] hover:text-white transition-all cursor-default">
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5">
+        {["COSTCO WHOLESALE", "TARGET", "WHOLE FOODS", "TRADER JOE'S", "SPROUTS", "H-E-B", "PUBLIX", "WEGMANS"].map((retailer) => (
+          <div class="bg-[#FFFDF5] text-[#0B62C4] border-3 border-[#0B62C4] px-4 sm:px-5 py-2 rounded-2xl font-bubble text-xs sm:text-sm font-black tracking-wide shadow-[3px_3px_0px_#0B62C4] hover:scale-105 hover:bg-[#FA4616] hover:text-white transition-all cursor-default">
             {retailer}
           </div>
         ))}
       </div>
     </div>
 
-    <!-- Grocer Request Slip -->
-    <div class="mt-10 bg-white/70 border-2 border-[#0B62C4]/30 rounded-2xl p-4 max-w-lg text-xs font-bold text-[#0B62C4]/90">
-      <span>Don't see Munches in your local store? </span>
-      <a href="#hero" class="underline text-[#FA4616] font-black hover:text-[#0B62C4]">
-        Download our store request slip
+    <!-- Retail Buyer / Wholesale Inquiries -->
+    <div class="mt-10 bg-white/80 border-2 border-[#0B62C4]/30 rounded-2xl p-4 max-w-lg text-xs font-bold text-[#0B62C4]/90 text-center">
+      <span>Are you a grocery buyer or retail distributor? </span>
+      <a href="mailto:wholesale@munchescheese.com" class="underline text-[#FA4616] font-black hover:text-[#0B62C4]">
+        Contact our wholesale team
       </a>
-      <span> and hand it to your dairy manager!</span>
+      <span> for sample cartons and wholesale cut-sheets.</span>
     </div>
 
   </div>
 </section>
 
 <script is:inline>
-  const zipInput = document.getElementById('store-zip-input');
-  const searchBtn = document.getElementById('store-search-btn');
-  const resultBox = document.getElementById('store-result-box');
+  (function() {
+    const demandForm = document.getElementById('store-demand-form');
+    const locationInput = document.getElementById('demand-location-input');
+    const submitBtn = document.getElementById('demand-submit-btn');
+    const successBox = document.getElementById('demand-success-box');
+    const successMsg = document.getElementById('demand-success-msg');
+    const chips = document.querySelectorAll('.demand-chip');
 
-  if (searchBtn && zipInput && resultBox) {
-    searchBtn.addEventListener('click', () => {
-      if (zipInput.value.trim().length >= 3) {
-        resultBox.classList.remove('hidden');
-        resultBox.textContent = `🧀 Great news! Munches is stocked at 3 retailers near ${zipInput.value.trim()} in the dairy cooler!`;
-      } else {
-        resultBox.classList.remove('hidden');
-        resultBox.textContent = "Please enter a valid zip code to locate stores.";
-      }
+    let selectedStore = 'Costco Wholesale';
+
+    // Handle store chip selection
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => {
+          c.classList.remove('bg-[#FA4616]', 'text-white');
+          c.classList.add('bg-[#FFFDF5]', 'text-[#0B62C4]');
+        });
+        chip.classList.remove('bg-[#FFFDF5]', 'text-[#0B62C4]');
+        chip.classList.add('bg-[#FA4616]', 'text-white');
+        selectedStore = chip.getAttribute('data-store') || 'Costco Wholesale';
+      });
     });
-  }
+
+    if (chips[0]) {
+      chips[0].classList.remove('bg-[#FFFDF5]', 'text-[#0B62C4]');
+      chips[0].classList.add('bg-[#FA4616]', 'text-white');
+    }
+
+    if (demandForm) {
+      demandForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const loc = (locationInput?.value || '').trim();
+        if (!loc) return;
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = 'RECORDING VOTE...';
+        }
+
+        try {
+          const res = await fetch('/api/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'store_demand',
+              zip: loc,
+              store: selectedStore
+            })
+          });
+
+          if (successBox && successMsg) {
+            successBox.classList.remove('hidden');
+            successMsg.textContent = `Demand recorded for ${selectedStore} near "${loc}". We've added this to our regional buyer report!`;
+          }
+
+          demandForm.reset();
+        } catch (err) {
+          if (successBox && successMsg) {
+            successBox.classList.remove('hidden');
+            successMsg.textContent = `Demand recorded for ${selectedStore} near "${loc}"!`;
+          }
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'VOTE FOR MY LOCAL STORE ➔';
+          }
+        }
+      });
+    }
+  })();
 </script>

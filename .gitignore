@@ -20,3 +20,4 @@ shot.png
 scratch/
 *.log
 .vercel
+.env*.local
